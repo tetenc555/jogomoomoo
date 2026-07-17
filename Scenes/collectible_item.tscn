@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cscductbg1e5b"]
+
+[ext_resource type="Script" uid="uid://beuev1g3pn0v4" path="res://Scenes/collectible_item.gd" id="1_a2pbx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8w0r3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
+
+[node name="Collectible item" type="Area2D" unique_id=410180475]
+script = ExtResource("1_a2pbx")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1772169748]
+sprite_frames = SubResource("SpriteFrames_8w0r3")
+frame_progress = 0.5666667
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=81681398]
+shape = SubResource("RectangleShape2D_8w0r3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
