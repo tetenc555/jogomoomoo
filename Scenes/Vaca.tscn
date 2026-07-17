@@ -1,3 +1,12 @@
 [gd_scene format=3 uid="uid://bcdclxqftbei0"]
 
-[node name="Vaca" type="Node2D" unique_id=1688416782]
+[ext_resource type="Script" uid="uid://6x78cfi1itt5" path="res://Scenes/vaca.gd" id="1_yar7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jccjc"]
+
+[node name="Vaca" type="CharacterBody2D" unique_id=1905277663]
+script = ExtResource("1_yar7j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1636382782]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_jccjc")
