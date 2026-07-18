@@ -50,8 +50,11 @@ func _physics_process(delta: float) -> void:
 	setAnimation(velocity.x,velocity.y)
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("Atirar") && powerup_atual == GameManager.PowerUpType.ARMA:
-		shoot()
+	if Input.is_action_just_pressed("Atirar"):
+		if powerup_atual == GameManager.PowerUpType.ARMA:
+			shoot()
+		if powerup_atual == GameManager.PowerUpType.MACHADO:
+			machadada()
 	
 	if (powerup_atual != GameManager.PowerUpType.NENHUM && Input.is_action_just_pressed("Dropar item")):
 		drop_current_item();
@@ -147,4 +150,9 @@ func shoot():
 	get_tree().current_scene.add_child(shot)
 	
 func machadada():
-	pass;
+	sprite.play("machadada")
+	var corpos_dentro = machadoArea.get_overlapping_bodies()
+	
+	for body in corpos_dentro:
+		if(body.is_in_group("Inimigos") || body.name=="Tree"):
+			body.die();
