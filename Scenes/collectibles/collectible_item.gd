@@ -3,7 +3,7 @@ extends Area2D
 @export var type: GameManager.PowerUpType
 @onready var sprite = $Sprite2D
 # Configurações da flutuação
-@export var amplitude: float = 10.0  # Quantos pixels ele vai subir e descer
+@export var amplitude: float = 3.0  # Quantos pixels ele vai subir e descer
 @export var velocidade: float = 3.0   # Quão rápido ele vai flutuar
 var pode_flutuar:bool = true
 # Guarda a posição inicial para o item não sair flutuando pelo mapa
@@ -45,7 +45,7 @@ func aplicar_impulso_drop(direcao: float):
 	
 	# 2. Altere a altura aqui para ele não pular tão alto
 	var altura_arco = global_position.y - 8 # Antes era 16 
-	var destino_vertical = global_position.y - 20
+	var destino_vertical = global_position.y - 10
 	
 	var tween = create_tween()
 	
