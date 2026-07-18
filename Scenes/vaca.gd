@@ -69,7 +69,7 @@ func take_damage(amount: int, enemy_position: Vector2):
 	health -= amount
 	invulnerable = true	
 	#Empurrão para trás
-	velocity.y = -200
+	velocity.y = -180
 	velocity.x = 900 * get_direction() * -1
 	
 	if health<=0:
