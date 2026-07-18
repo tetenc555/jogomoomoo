@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	setAnimation(velocity.x,velocity.y)
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("Atirar"):
+	if Input.is_action_just_pressed("Atirar") && powerup_atual == GameManager.PowerUpType.ARMA:
 		shoot()
 	
 	if (powerup_atual != GameManager.PowerUpType.NENHUM && Input.is_action_just_pressed("Dropar item")):
@@ -122,4 +122,5 @@ func shoot():
 	shot.global_position = self.global_position
 	if sprite.flip_h == true:
 		shot.set_speed(-1)
+	shot.playerShoot=true
 	get_tree().current_scene.add_child(shot)
