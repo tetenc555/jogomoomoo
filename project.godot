@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 Cortina="*res://TransicaoDeCenas/TransicaoCena.tscn"
 SceneController="*res://TransicaoDeCenas/SceneController.gd"
 GameController="*res://Menus/GameController.gd"
+GameManager="*uid://d1rnc0ppnkryx"
 
 [debug]
 
