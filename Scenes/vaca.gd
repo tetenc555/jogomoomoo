@@ -7,6 +7,7 @@ var dead = false
 const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
 var powerup_atual = GameManager.PowerUpType.NENHUM
+@onready var sprite = $AnimatedSprite2D
 const ITEM_SCENE = preload("res://Scenes/collectibles/collectible_item.tscn")
 
 @onready var collission = $CollisionShape2D
@@ -29,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	setAnimation(velocity.x,velocity.y)
 	move_and_slide()
 
 func take_damage(amount: int, enemy_position: Vector2):
@@ -87,3 +88,25 @@ func drop_current_item():
 	item_instanciado.tipo = powerup_atual
 	item_instanciado.global_position = global_position
 	get_parent().add_child(item_instanciado)
+
+func setAnimation(velocity_X, velocity_Y):
+	if velocity_X > 0:
+		sprite.flip_h = false
+	elif velocity_X < 0:
+		sprite.flip_h = true
+	if velocity_Y == 0:
+		if velocity_X != 0:
+			var anim_para_tocar = "andando_" + GameManager.POWERUP_NAMES[powerup_atual]
+			if sprite.animation != anim_para_tocar:
+				sprite.play(anim_para_tocar)
+		else:
+			var anim_para_tocar = "idle_" + GameManager.POWERUP_NAMES[powerup_atual]
+			if sprite.animation != anim_para_tocar:
+				sprite.play(anim_para_tocar)
+	else:
+		if velocity_Y < 0:
+			if sprite.animation != "pulando":
+				sprite.play("pulando")
+		elif velocity_Y > 0:
+			if sprite.animation != "caindo":
+				sprite.play("caindo")

@@ -1,8 +1,24 @@
 [gd_scene format=3 uid="uid://bcdclxqftbei0"]
 
 [ext_resource type="Script" uid="uid://6x78cfi1itt5" path="res://Scenes/vaca.gd" id="1_yar7j"]
+[ext_resource type="Texture2D" uid="uid://ck48ugq7m8mwp" path="res://Assets/placeholder_vaca.png" id="2_gtc4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jccjc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd1uw"]
+atlas = ExtResource("2_gtc4r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jccjc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd1uw")
+}],
+"loop": 1,
+"name": &"andando_normal",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=1905277663]
 script = ExtResource("1_yar7j")
@@ -10,3 +26,7 @@ script = ExtResource("1_yar7j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1636382782]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_jccjc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1977770381]
+sprite_frames = SubResource("SpriteFrames_jccjc")
+animation = &"andando_normal"
