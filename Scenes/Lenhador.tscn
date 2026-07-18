@@ -5,6 +5,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csc1j"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqugw"]
+size = Vector2(20, 4)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
 animations = [{
 "frames": [],
@@ -29,17 +32,24 @@ position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_csc1j")
 
 [node name="Head" type="Area2D" parent="." unique_id=518457186]
+position = Vector2(9, -26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head" unique_id=1779072288]
+position = Vector2(-9, 7)
+shape = SubResource("RectangleShape2D_rqugw")
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=2020293884]
+position = Vector2(-10, -10)
+target_position = Vector2(-8, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759629538]
-position = Vector2(0.062497616, -10.109375)
+position = Vector2(1.9073486e-06, -10)
 scale = Vector2(0.012421877, 0.011893381)
 sprite_frames = SubResource("SpriteFrames_csc1j")
 animation = &"new_animation"
 
 [node name="FloorDetector" type="RayCast2D" parent="." unique_id=1170075840]
+position = Vector2(-11, 0)
+target_position = Vector2(0, 16)
 
 [connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]

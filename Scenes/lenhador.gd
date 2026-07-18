@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 50.0
 const JUMP_VELOCITY = -200.0
 
 func _physics_process(delta: float) -> void:
@@ -67,6 +67,7 @@ func die():
 	queue_free()
 
 func _on_head_body_entered(body: Node2D) -> void:
+	print("Head detectou: ", body.name)
 	if dead:
 		return
 	if body.is_in_group("Player"):

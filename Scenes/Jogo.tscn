@@ -642,3 +642,4 @@ tile_set = SubResource("TileSet_jccjc")
 
 [node name="Lenhador" parent="." unique_id=1943549179 instance=ExtResource("5_5qywf")]
 position = Vector2(-13, -36)
+collision_layer = 2
