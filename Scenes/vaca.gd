@@ -4,6 +4,7 @@ var health := 3
 var invulnerable := false
 var dead = false
 
+const BULLET = preload("res://Scenes/Bullet.tscn")
 const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
 var powerup_atual = GameManager.PowerUpType.NENHUM
@@ -32,6 +33,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	setAnimation(velocity.x,velocity.y)
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("Atirar"):
+		shoot()
 
 func take_damage(amount: int, enemy_position: Vector2):
 	if invulnerable:
@@ -110,3 +114,11 @@ func setAnimation(velocity_X, velocity_Y):
 		elif velocity_Y > 0:
 			if sprite.animation != "caindo":
 				sprite.play("caindo")
+
+func shoot():
+	var shot = BULLET.instantiate()
+	get_parent().add_child(shot)
+	shot.global_position = self.global_position
+	if sprite.flip_h == true:
+		shot.set_speed(-1)
+	get_tree().current_scene.add_child(shot)
