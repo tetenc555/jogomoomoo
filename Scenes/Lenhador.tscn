@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dln2smt8urmnj"]
+
+[ext_resource type="Script" uid="uid://c1wtmpskxhob0" path="res://Scenes/lenhador.gd" id="1_pkipt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csc1j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
+
+[node name="Lenhador" type="CharacterBody2D" unique_id=1943549179]
+script = ExtResource("1_pkipt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2017669793]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_csc1j")
+
+[node name="Head" type="Area2D" parent="." unique_id=518457186]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head" unique_id=1779072288]
+
+[node name="WallDetector" type="RayCast2D" parent="." unique_id=2020293884]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759629538]
+sprite_frames = SubResource("SpriteFrames_csc1j")
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=1170075840]
+
+[connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]
