@@ -1,20 +1,19 @@
 extends CharacterBody2D
 
+var health := 3
+var invulnerable := false
+var dead = false
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
-enum PowerUpType { NENHUM, MACHADO, ARMA }
 var powerup_atual = PowerUpType.NENHUM
 const ITEM_SCENE = preload("res://Scenes/collectibles/collectible_item.tscn")
-const POWERUP_NAMES = {
-	PowerUpType.NENHUM: "normal",
-	PowerUpType.MACHADO: "machado",
-	PowerUpType.ARMA: "arma"
-}
 
 @onready var collission = $CollisionShape2D
 
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -33,17 +32,47 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func take_damage(amount: int, enemy_position: Vector2):
+	if invulnerable:
+		return
+	health -= amount
+	invulnerable = true
+	
+	#Empurrão para trás
+	velocity.y = -250
+	velocity.x = sign(global_position.x - enemy_position.x) * 200
+	
+	if health<=0:
+		die()
+		return
+	await get_tree().create_timer(1.0).timeout
+	invulnerable = false
+
+func die():
+	
+	dead = true
+	collision_layer = 0
+	collision_mask = 0
+	$CollisionShape2D.disabled = true
+	
+	velocity = Vector2.ZERO
+	
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	await tween.finished
+	
+	queue_free()
 
 				
 func changePowerUp(novo_powerup: PowerUpType):
 	match novo_powerup:
-		PowerUpType.MACHADO:
+		GameManager.PowerUpType.MACHADO:
 			powerup_atual = novo_powerup
 			# play animacao machado
-		PowerUpType.ARMA:
+		GameManager.PowerUpType.ARMA:
 			powerup_atual = novo_powerup
 			# play animacao arma
-		PowerUpType.NENHUM:
+		GameManager.PowerUpType.NENHUM:
 			drop_current_item()
 			powerup_atual = novo_powerup
 			
