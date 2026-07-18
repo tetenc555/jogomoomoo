@@ -17,8 +17,6 @@ func _physics_process(delta: float) -> void:
 		turn()
 	
 	move_and_slide()
-	
-	check_player_collision()
 
 var direction := -1
 var dead := false
@@ -37,13 +35,6 @@ func _process(delta: float) -> void:
 @onready var floor_detector = $FloorDetector #Virar ao encontrar penhasco
 @export var damage = 1
 
-func check_player_collision():
-	for i in range (get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		var body = collision.get_collider()
-		
-		if body.is_in_group("Player"):
-			body.take_damage(damage, global_position)
 func turn():
 	direction *= -1
 	sprite.flip_h = direction < 0
@@ -71,7 +62,13 @@ func _on_head_body_entered(body: Node2D) -> void:
 	if dead:
 		return
 	if body.is_in_group("Player"):
-		print("Morreu")
+		print("lenhador morreu")
 		velocity = Vector2.ZERO
 		die()
 		body.velocity.y = -350
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		print("lenhador causou dano")
+		body.take_damage(damage, global_position)

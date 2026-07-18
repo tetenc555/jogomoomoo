@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bs324p2e4w2r7" path="res://lenhador.jpg" id="2_rqugw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csc1j"]
+size = Vector2(20, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqugw"]
-size = Vector2(18, 4)
+size = Vector2(6, 4)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
 animations = [{
@@ -24,15 +25,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yav0v"]
+
 [node name="Lenhador" type="CharacterBody2D" unique_id=1943549179]
+collision_layer = 4
 script = ExtResource("1_pkipt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2017669793]
-position = Vector2(0, -10)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_csc1j")
 
 [node name="Head" type="Area2D" parent="." unique_id=518457186]
 position = Vector2(9, -26)
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head" unique_id=1779072288]
 position = Vector2(-9, 7)
@@ -43,8 +48,8 @@ position = Vector2(-10, -10)
 target_position = Vector2(-8, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759629538]
-position = Vector2(0, -10)
-scale = Vector2(0.012421877, 0.011893381)
+position = Vector2(-6.03497e-07, -10.000001)
+scale = Vector2(0.012500001, 0.011764705)
 sprite_frames = SubResource("SpriteFrames_csc1j")
 animation = &"new_animation"
 
@@ -52,4 +57,12 @@ animation = &"new_animation"
 position = Vector2(-11, 0)
 target_position = Vector2(0, 16)
 
+[node name="HurtBox" type="Area2D" parent="." unique_id=346717201]
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox" unique_id=1307448901]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_yav0v")
+
 [connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
