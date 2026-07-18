@@ -46,6 +46,7 @@ func check_player_collision():
 			body.take_damage(damage, global_position)
 func turn():
 	direction *= -1
+	sprite.flip_h = direction < 0
 	wall_detector.target_position.x *= -1
 	wall_detector.position.x *= -1
 	
