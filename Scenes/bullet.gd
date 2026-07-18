@@ -25,4 +25,5 @@ func _on_body_entered(body: Node2D) -> void:
 		body.take_damage(1,self.global_position)
 		queue_free();
 	if (body.is_in_group("Inimigos")):
+		body.die();
 		queue_free();
