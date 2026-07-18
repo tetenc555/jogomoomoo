@@ -10,7 +10,19 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 var powerup_atual = GameManager.PowerUpType.NENHUM
 @onready var sprite = $AnimatedSprite2D
+@onready var machadoArea = $MachadoArea
+@onready var machado_distancia_x: float = abs(machadoArea.position.x)
 
+func atualizar_posicao_ataque():
+	var direcao = get_direction()
+	
+	if direcao == -1:
+		machadoArea.position.x = -38.5  # <--- Teste aumentar esse valor
+		
+	else:
+		machadoArea.position.x = 0.0   # <--- Teste diminuir esse valor
+		
+		
 func get_direction():
 	if sprite.flip_h == false:
 		return 1
@@ -43,8 +55,9 @@ func _physics_process(delta: float) -> void:
 	
 	if (powerup_atual != GameManager.PowerUpType.NENHUM && Input.is_action_just_pressed("Dropar item")):
 		drop_current_item();
-		
-		
+	
+	atualizar_posicao_ataque();
+
 
 func take_damage(amount: int, enemy_position: Vector2):
 	if invulnerable:
@@ -132,3 +145,6 @@ func shoot():
 		shot.set_speed(1)	
 	shot.playerShoot=true
 	get_tree().current_scene.add_child(shot)
+	
+func machadada():
+	pass;
