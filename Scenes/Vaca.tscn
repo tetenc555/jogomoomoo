@@ -4,9 +4,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jccjc"]
 
-[node name="Vaca" type="CharacterBody2D" unique_id=1905277663]
+[node name="Player" type="CharacterBody2D" unique_id=1905277663]
 script = ExtResource("1_yar7j")
-powerup = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1636382782]
 position = Vector2(0, -10)

@@ -5,7 +5,7 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
 enum PowerUpType { NENHUM, MACHADO, ARMA }
 var powerup_atual = PowerUpType.NENHUM
-const ITEM_SCENE: Node2D = preload(#por a cena aqui)
+const ITEM_SCENE = preload("res://Scenes/collectibles/collectible_item.tscn")
 const POWERUP_NAMES = {
 	PowerUpType.NENHUM: "normal",
 	PowerUpType.MACHADO: "machado",
@@ -34,27 +34,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _setAnimation(velocity_X, velocity_Y):
-	if velocity_X > 0:
-		flip_h = false
-	elif velocity_X < 0:
-		flip_h = true
-	if velocity_Y == 0:
-		if velocity_X != 0:
-			var anim_para_tocar = "andando_" + sufixo
-			if animation != anim_para_tocar:
-				play(anim_para_tocar)
-		else:
-			var anim_para_tocar = "idle_" + sufixo
-			if animation != anim_para_tocar:
-				play(anim_para_tocar)
-	else:
-		if velocity_Y < 0:
-			if animation != "pulando":
-				play("pulando")
-		elif velocity_Y > 0:
-			if animation != "caindo":
-				play("caindo")
 				
 func changePowerUp(novo_powerup: PowerUpType):
 	match novo_powerup:
@@ -76,6 +55,6 @@ func drop_current_item():
 		return 
 
 	var item_instanciado = ITEM_SCENE.instantiate();
-	item_instaciado.tipo = powerup_atual
+	item_instanciado.tipo = powerup_atual
 	item_instanciado.global_position = global_position
 	get_parent().add_child(item_instanciado)
