@@ -17,6 +17,3 @@ func die() -> void:
 	
 	tween.tween_property(self, "global_position:y", self.global_position.y + 13.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		
-func _input(event):
-	if event.is_action_pressed("ui_accept"): # Barra de Espaço / Enter por padrão
-		die()
