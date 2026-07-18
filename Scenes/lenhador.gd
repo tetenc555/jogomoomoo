@@ -62,7 +62,7 @@ func _on_head_body_entered(body: Node2D) -> void:
 	if dead:
 		return
 	if body.is_in_group("Player"):
-		print("Morreu")
+		print("lenhador morreu")
 		velocity = Vector2.ZERO
 		die()
 		body.velocity.y = -350
@@ -70,5 +70,5 @@ func _on_head_body_entered(body: Node2D) -> void:
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		print("encontrou")
+		print("lenhador causou dano")
 		body.take_damage(damage, global_position)
