@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 50.0
 const JUMP_VELOCITY = -200.0
 
 func _physics_process(delta: float) -> void:
@@ -46,6 +46,7 @@ func check_player_collision():
 			body.take_damage(damage, global_position)
 func turn():
 	direction *= -1
+	sprite.flip_h = direction < 0
 	wall_detector.target_position.x *= -1
 	wall_detector.position.x *= -1
 	
@@ -70,6 +71,7 @@ func _on_head_body_entered(body: Node2D) -> void:
 	if dead:
 		return
 	if body.is_in_group("Player"):
+		print("Morreu")
 		velocity = Vector2.ZERO
 		die()
 		body.velocity.y = -350
