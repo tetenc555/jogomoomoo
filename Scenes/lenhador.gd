@@ -44,7 +44,6 @@ func turn():
 	floor_detector.position.x *= -1
 
 func die():
-	
 	dead = true
 	collision_layer = 0
 	collision_mask = 0
@@ -62,8 +61,6 @@ func _on_head_body_entered(body: Node2D) -> void:
 	if dead:
 		return
 	if body.is_in_group("Player"):
-		print("lenhador morreu")
-		velocity = Vector2.ZERO
 		die()
 		body.velocity.y = -350
 
