@@ -9,9 +9,8 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
 var powerup_atual = GameManager.PowerUpType.NENHUM
 @onready var sprite = $AnimatedSprite2D
-const ITEM_SCENE = preload("res://Scenes/collectibles/collectible_item.tscn")
 
-@onready var collission = $CollisionShape2D
+
 
 func _physics_process(delta: float) -> void:
 	if dead:
@@ -36,6 +35,11 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Atirar"):
 		shoot()
+	
+	if (powerup_atual != GameManager.PowerUpType.NENHUM && Input.is_action_just_pressed("Dropar item")):
+		drop_current_item();
+		
+		
 
 func take_damage(amount: int, enemy_position: Vector2):
 	if invulnerable:
@@ -87,11 +91,8 @@ func changePowerUp(novo_powerup: GameManager.PowerUpType):
 func drop_current_item():
 	if powerup_atual == GameManager.PowerUpType.NENHUM:
 		return 
-
-	var item_instanciado = ITEM_SCENE.instantiate();
-	item_instanciado.tipo = powerup_atual
-	item_instanciado.global_position = global_position
-	get_parent().add_child(item_instanciado)
+	powerup_atual = GameManager.PowerUpType.NENHUM
+	
 
 func setAnimation(velocity_X, velocity_Y):
 	if velocity_X > 0:

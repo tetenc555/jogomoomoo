@@ -5,7 +5,7 @@ extends Area2D
 # Configurações da flutuação
 @export var amplitude: float = 10.0  # Quantos pixels ele vai subir e descer
 @export var velocidade: float = 3.0   # Quão rápido ele vai flutuar
-
+var pode_flutuar:bool = true
 # Guarda a posição inicial para o item não sair flutuando pelo mapa
 var posicao_inicial: Vector2
 var tempo: float = 0.0
