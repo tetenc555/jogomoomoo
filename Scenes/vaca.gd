@@ -3,14 +3,19 @@ extends CharacterBody2D
 var health := 3
 var invulnerable := false
 var dead = false
+var tomou_dano : bool = false
 
 const BULLET = preload("res://Scenes/Bullet.tscn")
 const SPEED = 150.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -300.0
 var powerup_atual = GameManager.PowerUpType.NENHUM
 @onready var sprite = $AnimatedSprite2D
 
-
+func get_direction():
+	if sprite.flip_h == false:
+		return 1
+	else: 
+		return -1
 
 func _physics_process(delta: float) -> void:
 	if dead:
@@ -26,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if direction and !tomou_dano:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -44,18 +49,19 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount: int, enemy_position: Vector2):
 	if invulnerable:
 		return
+	tomou_dano = true
 	health -= amount
-	invulnerable = true
-	
+	invulnerable = true	
 	#Empurrão para trás
 	velocity.y = -250
-	velocity.x = sign(global_position.x - enemy_position.x) * 200
+	velocity.x = 1000 * get_direction() * -1
 	
 	if health<=0:
 		die()
 		return
 	await get_tree().create_timer(1.0).timeout
 	invulnerable = false
+	tomou_dano = false
 
 func die():
 	
