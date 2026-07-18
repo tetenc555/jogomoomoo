@@ -623,11 +623,10 @@ sources/1 = SubResource("TileSetAtlasSource_dtjil")
 [node name="Jogo" type="Node2D" unique_id=1469865509]
 
 [node name="Collectible item" parent="." unique_id=1374150909 instance=ExtResource("1_dtjil")]
-position = Vector2(36, -4)
+position = Vector2(31, 0)
 type = 2
 
 [node name="Player" parent="." unique_id=1688416782 instance=ExtResource("1_hkjmy")]
-position = Vector2(10, -26)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=547942262]
 zoom = Vector2(2, 2)
@@ -641,4 +640,3 @@ tile_map_data = PackedByteArray("AAD//wEAAAABABAAAAAAAAEAAAABABAAAAABAAEAAAABABA
 tile_set = SubResource("TileSet_jccjc")
 
 [node name="Lenhador" parent="." unique_id=1943549179 instance=ExtResource("5_5qywf")]
-position = Vector2(-13, -36)

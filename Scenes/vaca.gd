@@ -6,7 +6,7 @@ var dead = false
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
-var powerup_atual = PowerUpType.NENHUM
+var powerup_atual = GameManager.PowerUpType.NENHUM
 const ITEM_SCENE = preload("res://Scenes/collectibles/collectible_item.tscn")
 
 @onready var collission = $CollisionShape2D
@@ -64,7 +64,7 @@ func die():
 	queue_free()
 
 				
-func changePowerUp(novo_powerup: PowerUpType):
+func changePowerUp(novo_powerup: GameManager.PowerUpType):
 	match novo_powerup:
 		GameManager.PowerUpType.MACHADO:
 			powerup_atual = novo_powerup
@@ -80,7 +80,7 @@ func changePowerUp(novo_powerup: PowerUpType):
 			print("Power-up inválido")
 			
 func drop_current_item():
-	if powerup_atual == PowerUpType.NENHUM:
+	if powerup_atual == GameManager.PowerUpType.NENHUM:
 		return 
 
 	var item_instanciado = ITEM_SCENE.instantiate();

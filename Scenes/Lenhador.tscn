@@ -35,6 +35,8 @@ shape = SubResource("RectangleShape2D_csc1j")
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=2020293884]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759629538]
+position = Vector2(0.062497616, -10.109375)
+scale = Vector2(0.012421877, 0.011893381)
 sprite_frames = SubResource("SpriteFrames_csc1j")
 animation = &"new_animation"
 
