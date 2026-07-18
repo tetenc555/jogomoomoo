@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bxh8mkmutdyhn"]
+
+[ext_resource type="Texture2D" uid="uid://klcxj7xcoxp0" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/objects_/tree.png" id="1_gtca3"]
+[ext_resource type="Script" uid="uid://bry0n8ux3w55s" path="res://Scenes/tree.gd" id="1_itkj8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rvk3"]
+size = Vector2(14, 48)
+
+[node name="Tree" type="StaticBody2D" unique_id=411317137]
+disable_mode = 1
+collision_mask = 15
+script = ExtResource("1_itkj8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1924552109]
+position = Vector2(-7, -24)
+texture = ExtResource("1_gtca3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306055167]
+position = Vector2(-7, -24)
+shape = SubResource("RectangleShape2D_0rvk3")
