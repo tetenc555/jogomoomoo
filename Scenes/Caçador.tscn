@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dc0h2gjpufjmy"]
+
+[ext_resource type="Script" uid="uid://cvjdi3hpjxkvr" path="res://Scenes/caçador.gd" id="1_3cn7e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csc1j"]
+
+[node name="Caçador" type="CharacterBody2D" unique_id=2047226864 groups=["Inimigos"]]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_3cn7e")
+damage = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1921466983]
+sprite_frames = SubResource("SpriteFrames_csc1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=148214411]
+shape = SubResource("RectangleShape2D_csc1j")
+
+[node name="WallDetector" type="RayCast2D" parent="." unique_id=277552264]
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=541209653]
+
+[node name="VisionRay" type="RayCast2D" parent="." unique_id=312300703]
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1660138706]
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=360384970]
+wait_time = 1.2
