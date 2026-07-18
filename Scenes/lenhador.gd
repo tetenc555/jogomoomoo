@@ -1,0 +1,75 @@
+extends CharacterBody2D
+
+const SPEED = 100.0
+const JUMP_VELOCITY = -200.0
+
+func _physics_process(delta: float) -> void:
+	if dead:
+		return
+	
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
+	velocity.x = direction * SPEED
+	
+	if wall_detector.is_colliding() or not floor_detector.is_colliding():
+		turn()
+	
+	move_and_slide()
+	
+	check_player_collision()
+
+var direction := -1
+var dead := false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+@onready var sprite = $AnimatedSprite2D
+@onready var wall_detector = $WallDetector # Vira ao encontrar parede
+@onready var floor_detector = $FloorDetector #Virar ao encontrar penhasco
+@export var damage = 1
+
+func check_player_collision():
+	for i in range (get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var body = collision.get_collider()
+		
+		if body.is_in_group("Player"):
+			body.take_damage(damage, global_position)
+func turn():
+	direction *= -1
+	wall_detector.target_position.x *= -1
+	wall_detector.position.x *= -1
+	
+	floor_detector.position.x *= -1
+
+func die():
+	
+	dead = true
+	collision_layer = 0
+	collision_mask = 0
+	$CollisionShape2D.disabled = true
+	
+	velocity = Vector2.ZERO
+	
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	await tween.finished
+	
+	queue_free()
+
+func _on_head_body_entered(body: Node2D) -> void:
+	if dead:
+		return
+	if body.is_in_group("Player"):
+		velocity = Vector2.ZERO
+		die()
+		body.velocity.y = -350
