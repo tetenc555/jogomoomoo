@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var playerShoot: bool = false
 @onready var sprite = $Sprite2D
 var speed = 50.0
 var direction = Vector2.RIGHT
@@ -18,5 +19,10 @@ func set_speed(direction : int) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
-		print("Bateu no cenário!")
 		queue_free()
+	if (body.name == "Player" && !playerShoot):
+		body.take_damage(1,self.global_position)
+		queue_free();
+	if (body.is_in_group("Inimigos")):
+		#toma dano
+		queue_free();
