@@ -96,20 +96,25 @@ func die():
 
 				
 func changePowerUp(novo_powerup: GameManager.PowerUpType):
+	if novo_powerup == self.powerup_atual:
+		return false
 	match novo_powerup:
 		GameManager.PowerUpType.MACHADO:
 			powerup_atual = novo_powerup
+			return true
 			# play animacao machado
 		GameManager.PowerUpType.ARMA:
 			powerup_atual = novo_powerup
+			return true
 			# play animacao arma
 		GameManager.PowerUpType.NENHUM:
 			drop_current_item()
 			powerup_atual = novo_powerup
+			return true
 			
 		_:
 			print("Power-up inválido")
-			
+	
 func drop_current_item():
 	if powerup_atual == GameManager.PowerUpType.NENHUM:
 		return 
