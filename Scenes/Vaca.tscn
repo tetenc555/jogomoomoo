@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jccjc"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1905277663 groups=["Player"]]
+collision_layer = 2
 script = ExtResource("1_yar7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1636382782]
