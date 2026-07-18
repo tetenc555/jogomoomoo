@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bs324p2e4w2r7" path="res://lenhador.jpg" id="2_rqugw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csc1j"]
-size = Vector2(20, 1)
+size = Vector2(20, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqugw"]
 size = Vector2(6, 4)
@@ -28,11 +28,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yav0v"]
 
 [node name="Lenhador" type="CharacterBody2D" unique_id=1943549179 groups=["Inimigos"]]
-collision_layer = 4
+collision_layer = 2
+collision_mask = 15
 script = ExtResource("1_pkipt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2017669793]
-position = Vector2(0, -0.5)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_csc1j")
 
 [node name="Head" type="Area2D" parent="." unique_id=518457186]

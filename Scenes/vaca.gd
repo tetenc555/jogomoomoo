@@ -122,5 +122,7 @@ func shoot():
 	shot.global_position = self.global_position
 	if sprite.flip_h == true:
 		shot.set_speed(-1)
+	else :
+		shot.set_speed(1)	
 	shot.playerShoot=true
 	get_tree().current_scene.add_child(shot)

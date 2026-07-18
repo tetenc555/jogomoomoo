@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 
 [node name="Collectible item" type="Area2D" unique_id=1374150909]
+collision_mask = 5
 script = ExtResource("1_a2pbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=111069458]
