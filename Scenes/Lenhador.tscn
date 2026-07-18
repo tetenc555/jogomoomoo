@@ -29,7 +29,7 @@ animations = [{
 
 [node name="Lenhador" type="CharacterBody2D" unique_id=1943549179 groups=["Inimigos"]]
 collision_layer = 2
-collision_mask = 15
+collision_mask = 9
 script = ExtResource("1_pkipt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2017669793]
@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_csc1j")
 
 [node name="Head" type="Area2D" parent="." unique_id=518457186]
 position = Vector2(9, -26)
-collision_mask = 3
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head" unique_id=1779072288]
 position = Vector2(-9, 7)
@@ -59,7 +59,8 @@ position = Vector2(-11, 0)
 target_position = Vector2(0, 16)
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=346717201]
-collision_mask = 3
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox" unique_id=1307448901]
 position = Vector2(0, -10)
