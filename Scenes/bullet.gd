@@ -1,5 +1,7 @@
 extends Area2D
 
+
+@onready var sprite = $Sprite2D
 var speed = 50.0
 var direction = Vector2.RIGHT
 var damage = 1
@@ -20,3 +22,4 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	
 func set_speed(direction : int) -> void:
 	speed *= -1
+	sprite.flip_h = true
