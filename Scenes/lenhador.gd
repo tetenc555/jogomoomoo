@@ -67,10 +67,10 @@ func die():
 	queue_free()
 
 func _on_head_body_entered(body: Node2D) -> void:
-	print("Head detectou: ", body.name)
 	if dead:
 		return
 	if body.is_in_group("Player"):
+		print("Morreu")
 		velocity = Vector2.ZERO
 		die()
 		body.velocity.y = -350
