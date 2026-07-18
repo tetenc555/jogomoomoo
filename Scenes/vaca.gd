@@ -2,9 +2,14 @@ extends CharacterBody2D
 
 var health := 3
 var invulnerable := false
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 var dead = false
+
+const SPEED = 150.0
+const JUMP_VELOCITY = -200.0
+var powerup_atual = PowerUpType.NENHUM
+const ITEM_SCENE = preload("res://Scenes/collectibles/collectible_item.tscn")
+
+@onready var collission = $CollisionShape2D
 
 func _physics_process(delta: float) -> void:
 	if dead:
@@ -57,3 +62,28 @@ func die():
 	await tween.finished
 	
 	queue_free()
+
+				
+func changePowerUp(novo_powerup: PowerUpType):
+	match novo_powerup:
+		GameManager.PowerUpType.MACHADO:
+			powerup_atual = novo_powerup
+			# play animacao machado
+		GameManager.PowerUpType.ARMA:
+			powerup_atual = novo_powerup
+			# play animacao arma
+		GameManager.PowerUpType.NENHUM:
+			drop_current_item()
+			powerup_atual = novo_powerup
+			
+		_:
+			print("Power-up inválido")
+			
+func drop_current_item():
+	if powerup_atual == PowerUpType.NENHUM:
+		return 
+
+	var item_instanciado = ITEM_SCENE.instantiate();
+	item_instanciado.tipo = powerup_atual
+	item_instanciado.global_position = global_position
+	get_parent().add_child(item_instanciado)
