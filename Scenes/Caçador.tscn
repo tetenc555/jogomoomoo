@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://dc0h2gjpufjmy"]
 
 [ext_resource type="Script" uid="uid://cvjdi3hpjxkvr" path="res://Scenes/caçador.gd" id="1_3cn7e"]
-[ext_resource type="PackedScene" uid="uid://br38iq5qhu5we" path="res://Scenes/Bullet.tscn" id="2_pfktg"]
-[ext_resource type="Texture2D" uid="uid://bs324p2e4w2r7" path="res://lenhador.jpg" id="2_r61lp"]
+[ext_resource type="Texture2D" path="res://lenhador.jpg" id="2_r61lp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
 animations = [{
@@ -27,7 +26,6 @@ collision_layer = 2
 collision_mask = 9
 up_direction = Vector2(0, 1)
 script = ExtResource("1_3cn7e")
-bullet_scene = ExtResource("2_pfktg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1921466983]
 position = Vector2(-0.101562455, -9.898438)
@@ -40,8 +38,8 @@ position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_csc1j")
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=277552264]
-position = Vector2(-10, -10)
-target_position = Vector2(-8, 0)
+position = Vector2(10, -10)
+target_position = Vector2(8, 0)
 
 [node name="FloorDetector" type="RayCast2D" parent="." unique_id=541209653]
 position = Vector2(12, -1)
@@ -57,3 +55,5 @@ position = Vector2(0, -5)
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=360384970]
 wait_time = 1.2
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

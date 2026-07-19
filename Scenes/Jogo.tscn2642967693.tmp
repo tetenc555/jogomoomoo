@@ -627,7 +627,7 @@ sources/1 = SubResource("TileSetAtlasSource_dtjil")
 [node name="Jogo" type="Node2D" unique_id=1469865509]
 
 [node name="Collectible item" parent="." unique_id=1374150909 instance=ExtResource("1_dtjil")]
-position = Vector2(62, 1)
+position = Vector2(72, 3)
 type = 1
 
 [node name="Player" parent="." unique_id=1688416782 instance=ExtResource("1_hkjmy")]
@@ -650,8 +650,8 @@ position = Vector2(-64, -15)
 [node name="Barrier" parent="." unique_id=208501601 instance=ExtResource("6_we14d")]
 position = Vector2(-108, -14)
 
-[node name="Caçador" parent="." unique_id=2047226864 instance=ExtResource("8_4l7l4")]
-position = Vector2(-19, -18)
-
 [node name="Tree" parent="." unique_id=411317137 instance=ExtResource("7_tfaud")]
-position = Vector2(97, 16)
+position = Vector2(96, 17)
+
+[node name="Caçador" parent="." unique_id=2047226864 instance=ExtResource("8_4l7l4")]
+position = Vector2(95.35518, 17.568146)

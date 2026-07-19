@@ -6,7 +6,7 @@ var direction := 1
 var dead := false
 var player : CharacterBody2D = null
 
-@export var bullet_scene : PackedScene
+@export var bullet_scene : PackedScene = preload("res://Scenes/Bullet.tscn")
 
 @onready var sprite = $AnimatedSprite2D
 @onready var wall_detector = $WallDetector
@@ -14,14 +14,13 @@ var player : CharacterBody2D = null
 @onready var vision_ray = $VisionRay
 @onready var shoot_point = $ShootPoint
 @onready var shoot_timer = $ShootTimer
-var item_scene = preload("res://Scenes/collectibles/collectible_item.tscn")
+var item_scene = preload("res://Scenes/collectible_item.tscn")
 
 func get_direction():
 	if sprite.flip_h == false:
 		return 1
 	else: 
 		return -1
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -106,6 +105,7 @@ func _physics_process(delta: float) -> void:
 	if can_see_player():
 		velocity.x = 0
 		if shoot_timer.is_stopped():
+			print("Iniciando timer")
 			shoot_timer.start()
 	else:
 		patrol()
