@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csdp1ynwpk1ib" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/midground_/spring_.png" id="5_xkck0"]
 [ext_resource type="PackedScene" uid="uid://bxh8mkmutdyhn" path="res://Scenes/Tree.tscn" id="6_sok8v"]
 [ext_resource type="PackedScene" uid="uid://dln2smt8urmnj" path="res://Scenes/Lenhador.tscn" id="7_1ho80"]
+[ext_resource type="PackedScene" uid="uid://dc0h2gjpufjmy" path="res://Scenes/Caçador.tscn" id="7_xkck0"]
 
 [sub_resource type="GDScript" id="GDScript_3qrxq"]
 script/source = "extends Node2D
@@ -841,7 +842,7 @@ sources/0 = SubResource("TileSetAtlasSource_0eixc")
 script = SubResource("GDScript_3qrxq")
 
 [node name="Player" parent="." unique_id=1905277663 instance=ExtResource("2_0eixc")]
-position = Vector2(448, -68)
+position = Vector2(1218, -77)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1768835647]
 zoom = Vector2(4, 4)
@@ -878,9 +879,6 @@ position = Vector2(882, 20)
 [node name="Lenhador4" parent="." unique_id=30871441 instance=ExtResource("7_1ho80")]
 position = Vector2(989, 16)
 
-[node name="Lenhador5" parent="." unique_id=647359280 instance=ExtResource("7_1ho80")]
-position = Vector2(840, 24)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1759710592]
 layer = -1
 
@@ -891,3 +889,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.6745098, 1, 1)
+
+[node name="Caçador" parent="." unique_id=2047226864 instance=ExtResource("7_xkck0")]
+position = Vector2(-55, 13)
