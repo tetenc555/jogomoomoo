@@ -28,20 +28,21 @@ func _on_placa_dica_3_body_entered(body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if can_spawn == false:
-		pass
-	var lista_spawners = $Spawners.get_children()
-	var spawner = lista_spawners.pop_back()
-	var numero_aleatorio = randi_range(1, 10)
-	if numero_aleatorio > 4:
-		var inimigo = CACADOR.instantiate(spawner.global_position)
-		add_child(inimigo)
-	else:
-		var inimigo = CACADOR.instantiate(spawner.global_position)
-		add_child(inimigo)
+	if can_spawn == true:
+		var lista_spawners = $Spawners.get_children()
+		var spawner = lista_spawners.pop_back()
+		var numero_aleatorio = randi_range(1, 10)
+		if numero_aleatorio < 4:
+			var inimigo = CACADOR.instantiate()
+			inimigo.global_position = spawner.global_position
+			add_child(inimigo)
+		else:
+			var inimigo = LENHADOR.instantiate()
+			inimigo.global_position = spawner.global_position
+			add_child(inimigo)
 
 
 func _on_trigger_spawn_body_entered(body: Node2D) -> void:
-	if body.name == "PLayer": 
+	if body.name == "Player": 
 		can_spawn = true
 		$TriggerSpawn.queue_free()

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://1ma223rfj12" path="res://Scenes/Barrier.tscn" id="7_dfm0s"]
 [ext_resource type="PackedScene" uid="uid://dc0h2gjpufjmy" path="res://Scenes/Caçador.tscn" id="9_rrhud"]
 [ext_resource type="PackedScene" uid="uid://dln2smt8urmnj" path="res://Scenes/Lenhador.tscn" id="10_xfufj"]
+[ext_resource type="PackedScene" uid="uid://xvu5pk8sbcc0" path="res://Scenes/collectible_item.tscn" id="11_xfufj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_455tl"]
 texture = ExtResource("2_hcmch")
@@ -1055,6 +1056,7 @@ shape = SubResource("RectangleShape2D_xfufj")
 
 [node name="Timer" type="Timer" parent="." unique_id=1353173579]
 wait_time = 2.0
+autostart = true
 
 [node name="Spawners" type="Node2D" parent="." unique_id=1459090702]
 
@@ -1063,11 +1065,23 @@ position = Vector2(1104, -45)
 
 [node name="TriggerSpawn" type="Area2D" parent="." unique_id=962564484]
 position = Vector2(903, -73)
-collision_layer = 0
+collision_layer = 5
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerSpawn" unique_id=1788752505]
 shape = SubResource("RectangleShape2D_leews")
+
+[node name="Collectible item" parent="TriggerSpawn" unique_id=1374150909 instance=ExtResource("11_xfufj")]
+position = Vector2(227.17737, 2.0661774)
+type = 1
+
+[node name="Collectible item2" parent="TriggerSpawn" unique_id=293794352 instance=ExtResource("11_xfufj")]
+position = Vector2(227.17737, 2.0661774)
+type = 1
+
+[node name="Collectible item3" parent="TriggerSpawn" unique_id=1336638930 instance=ExtResource("11_xfufj")]
+position = Vector2(227.17737, 2.0661774)
+type = 1
 
 [connection signal="body_entered" from="PlacaDica3" to="." method="_on_placa_dica_3_body_entered"]
 [connection signal="body_entered" from="PlacaDica2" to="." method="_on_placa_dica_2_body_entered"]
