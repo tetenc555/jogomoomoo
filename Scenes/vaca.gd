@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		if powerup_atual == GameManager.PowerUpType.NENHUM:
 			velocity.y = JUMP_VELOCITY
 		else:
-			velocity.y = JUMP_VELOCITY + 100
+			velocity.y = JUMP_VELOCITY + 50
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -90,8 +90,8 @@ func die():
 	sprite.flip_v=true;
 	collision_layer = 0
 	collision_mask = 0
-	camera2d.reparent(self.get_parent());
-	#camera2d.global_position = self.global_position;
+	#camera2d.reparent(self.get_parent());
+	camera2d.global_position = self.global_position;
 	$CollisionShape2D.disabled = true
 	
 	velocity = Vector2.ZERO
@@ -99,7 +99,7 @@ func die():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	await tween.finished
-	
+	get_tree().reload_current_scene()
 	queue_free()
 
 				
