@@ -26,6 +26,7 @@ func get_direction():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
+	print(player)
 
 func patrol():
 	velocity.x = direction * SPEED
@@ -35,31 +36,54 @@ func patrol():
 func turn():
 	direction *= -1
 	sprite.flip_h = direction < 0
-	wall_detector.target_position.x *= -1
-	wall_detector.position.x *= -1
 	
-	floor_detector.position.x *= -1
+	wall_detector.target_position.x = 12*direction
+	wall_detector.position.x = 11*direction
 	
-	vision_ray.target_position.x *= -1
-	shoot_point.position.x *= -1
+	floor_detector.position.x = 11*direction
+	
+	vision_ray.target_position.x = 300*direction
+	shoot_point.position.x = 10*direction
 
 func can_see_player() -> bool:
+	if player == null:
+		print("Player é null")
+		return false
 	
 	var distance = player.global_position - self.global_position
+	print("Distancia: ", distance)
+	
 	if abs(distance.x) > 300:
+		print("Longe")
 		return false
-	if sign(distance.x) != direction:	
+	
+	if sign(distance.x) != direction:
+		print("Jogador atras")
 		return false
+	
 	vision_ray.target_position = distance
-	if(vision_ray.is_colliding()):
-		return vision_ray.get_collider() == player
+	vision_ray.force_raycast_update()
+	
+	if !vision_ray.is_colliding():
+		print("Raio nao colidindo")
+		return false
+	var collider = vision_ray.get_collider()
+	print("Raio bateu em:", collider)
+	
+	if collider == player:
+		print("Enxerga o jogador")
+		return true
+	
 	return false
 
 func _on_shoot_timer_timeout():
+	print("Timer disparou")
 	if can_see_player():
+		print("Caçador atira")
 		shoot()
 
 func shoot():
+	print("Atirando")
 	var bullet = bullet_scene.instantiate()
 	
 	bullet.playerShoot = false
@@ -75,22 +99,18 @@ func shoot():
 func _physics_process(delta: float) -> void:
 	if dead:
 		return
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	velocity.x = direction * SPEED
-	
 	if can_see_player():
-		
 		velocity.x = 0
-		
 		if shoot_timer.is_stopped():
 			shoot_timer.start()
-		else:
-			if !shoot_timer.is_stopped():
-				shoot_timer.stop()
+	else:
+		patrol()
+		if !shoot_timer.is_stopped():
+			shoot_timer.stop()
 	
 	move_and_slide()
 
