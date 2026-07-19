@@ -13,8 +13,6 @@ var powerup_atual = GameManager.PowerUpType.NENHUM
 @onready var machadoArea = $MachadoArea
 @onready var machado_distancia_x: float = abs(machadoArea.position.x)
 
-func _ready() -> void:
-	SceneController.changeSceneTo(BULLET, "CircleToon")
 
 func atualizar_posicao_ataque():
 	var direcao = get_direction()
@@ -162,5 +160,8 @@ func machadada():
 	var corpos_dentro = machadoArea.get_overlapping_bodies()
 	
 	for body in corpos_dentro:
-		if(body.is_in_group("Inimigos") || body.name=="Tree"):
+		if(body.is_in_group("Inimigos")):
+			body.die()
+		if(body.name=="Tree" || body.name == "Barrier"):
+			self.changePowerUp(GameManager.PowerUpType.NENHUM)
 			body.die();
