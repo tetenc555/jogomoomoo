@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://xvu5pk8sbcc0"]
 
-[ext_resource type="Script" uid="uid://beuev1g3pn0v4" path="res://Scenes/collectibles/collectible_item.gd" id="1_a2pbx"]
+[ext_resource type="Script" uid="uid://beuev1g3pn0v4" path="res://Scenes/collectible_item.gd" id="1_a2pbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 

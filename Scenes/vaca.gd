@@ -159,5 +159,5 @@ func machadada():
 	var corpos_dentro = machadoArea.get_overlapping_bodies()
 	
 	for body in corpos_dentro:
-		if(body.is_in_group("Inimigos") || body.name=="Tree"):
+		if(body.is_in_group("Inimigos") || body.name=="Tree" || body.name=="Barrier"):
 			body.die();
