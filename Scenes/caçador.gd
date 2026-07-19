@@ -37,8 +37,8 @@ func turn():
 
 func can_see_player() -> bool:
 	
-	var distance = player.global.position() - global_position
-	if abs(distance.x > 300):
+	var distance = player.global_position - global_position
+	if abs(distance.x) > 300:
 		return false
 	if sign(distance.x) != direction:	
 		return false
