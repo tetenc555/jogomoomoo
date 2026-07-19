@@ -8,12 +8,20 @@ var player : CharacterBody2D = null
 
 @export var bullet_scene : PackedScene
 
-@onready var sprite = $AnimatedSprite
+@onready var sprite = $AnimatedSprite2D
 @onready var wall_detector = $WallDetector
 @onready var floor_detector = $FloorDetector
 @onready var vision_ray = $VisionRay
 @onready var shoot_point = $ShootPoint
 @onready var shoot_timer = $ShootTimer
+var item_scene = preload("res://Scenes/collectibles/collectible_item.tscn")
+
+func get_direction():
+	if sprite.flip_h == false:
+		return 1
+	else: 
+		return -1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,7 +45,7 @@ func turn():
 
 func can_see_player() -> bool:
 	
-	var distance = player.global_position - global_position
+	var distance = player.global_position - self.global_position
 	if abs(distance.x) > 300:
 		return false
 	if sign(distance.x) != direction:	
@@ -92,7 +100,12 @@ func _process(delta: float) -> void:
 	pass
 
 func die():
-	
+	var instantied_item = item_scene.instantiate()
+	instantied_item.type = GameManager.PowerUpType.ARMA
+	instantied_item.global_position = self.global_position + Vector2(25 * get_direction(), 0)
+	get_parent().add_child(instantied_item)
+	if instantied_item.has_method("aplicar_impulso_drop"):
+		instantied_item.aplicar_impulso_drop(get_direction())
 	dead = true
 	collision_layer = 0
 	collision_mask = 0
