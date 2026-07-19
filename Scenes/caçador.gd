@@ -5,6 +5,8 @@ const JUMP_VELOCITY = -200.0
 var direction := 1
 var dead := false
 var player : CharacterBody2D = null
+var lost_sight_time := 0.0
+const LOST_SIGHT_DELAY := 0.5
 
 @export var bullet_scene : PackedScene = preload("res://Scenes/Bullet.tscn")
 
@@ -102,14 +104,17 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	if can_see_player():
+		lost_sight_time = 0.0
 		velocity.x = 0
 		if shoot_timer.is_stopped():
 			#print("Iniciando timer")
 			shoot_timer.start()
 	else:
-		patrol()
-		if !shoot_timer.is_stopped():
-			shoot_timer.stop()
+		lost_sight_time += delta
+		if lost_sight_time > LOST_SIGHT_DELAY:
+			patrol()
+			if !shoot_timer.is_stopped():
+				shoot_timer.stop()
 	
 	move_and_slide()
 	setAnimation(velocity.x, velocity.y)
