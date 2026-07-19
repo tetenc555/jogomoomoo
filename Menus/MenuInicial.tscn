@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2jk11veho2ly"]
+[gd_scene format=3 uid="uid://b2jk11veho2ly"]
 
 [ext_resource type="Script" uid="uid://djrxho7xs1q05" path="res://Menus/MenuInicial.gd" id="1_pq5jh"]
 [ext_resource type="Theme" uid="uid://boio4eyolwhtj" path="res://Menus/UI_theme.tres" id="2_ckujo"]
@@ -44,7 +44,7 @@ _data = {
 &"RESET": SubResource("Animation_0vkyi")
 }
 
-[node name="MenuInicial" type="Control"]
+[node name="MenuInicial" type="Control" unique_id=170023785]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,10 +53,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node" parent="." unique_id=128665514]
 script = ExtResource("1_pq5jh")
 
-[node name="MenuInicial" type="Control" parent="."]
+[node name="MenuInicial" type="Control" parent="." unique_id=1175211462]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MenuInicial"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuInicial" unique_id=1219549215]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -74,10 +74,10 @@ offset_bottom = 181.0
 grow_horizontal = 2
 theme_override_font_sizes/normal_font_size = 66
 bbcode_enabled = true
-text = "[center]Nome do jogo"
+text = "[center]Mimosa Adventures"
 fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuInicial"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuInicial" unique_id=976635821]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -89,25 +89,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="Start" type="Button" parent="MenuInicial/VBoxContainer"]
+[node name="Start" type="Button" parent="MenuInicial/VBoxContainer" unique_id=588343010]
 layout_mode = 2
 theme = ExtResource("2_ckujo")
 theme_override_font_sizes/font_size = 36
 text = "Start"
 
-[node name="Options" type="Button" parent="MenuInicial/VBoxContainer"]
+[node name="Options" type="Button" parent="MenuInicial/VBoxContainer" unique_id=257334099]
 layout_mode = 2
 theme = ExtResource("2_ckujo")
 theme_override_font_sizes/font_size = 36
 text = "Options"
 
-[node name="Quit" type="Button" parent="MenuInicial/VBoxContainer"]
+[node name="Quit" type="Button" parent="MenuInicial/VBoxContainer" unique_id=558454063]
 layout_mode = 2
 theme = ExtResource("2_ckujo")
 theme_override_font_sizes/font_size = 36
 text = "Quit"
 
-[node name="Opcoes" type="Control" parent="."]
+[node name="Opcoes" type="Control" parent="." unique_id=1844709397]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -118,7 +118,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_ckujo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Opcoes"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Opcoes" unique_id=739106721]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -129,17 +129,17 @@ offset_bottom = 649.0
 grow_horizontal = 2
 theme_override_constants/separation = 10
 
-[node name="Titulo" type="Label" parent="Opcoes/VBoxContainer"]
+[node name="Titulo" type="Label" parent="Opcoes/VBoxContainer" unique_id=516795205]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Options"
 horizontal_alignment = 1
 
-[node name="ResolucaoLabel" type="Label" parent="Opcoes/VBoxContainer"]
+[node name="ResolucaoLabel" type="Label" parent="Opcoes/VBoxContainer" unique_id=1945170643]
 layout_mode = 2
 text = "Resolution:"
 
-[node name="Resolucao" type="OptionButton" parent="Opcoes/VBoxContainer"]
+[node name="Resolucao" type="OptionButton" parent="Opcoes/VBoxContainer" unique_id=793429658]
 layout_mode = 2
 selected = 0
 item_count = 4
@@ -152,44 +152,44 @@ popup/item_2/id = 2
 popup/item_3/text = "1024x768"
 popup/item_3/id = 3
 
-[node name="VolumeLabel" type="Label" parent="Opcoes/VBoxContainer"]
+[node name="VolumeLabel" type="Label" parent="Opcoes/VBoxContainer" unique_id=1128989138]
 layout_mode = 2
 text = "
 Audio:"
 horizontal_alignment = 1
 
-[node name="GeralLabel" type="Label" parent="Opcoes/VBoxContainer"]
+[node name="GeralLabel" type="Label" parent="Opcoes/VBoxContainer" unique_id=150044672]
 layout_mode = 2
 text = "Geral:"
 
-[node name="GeralSlider" type="HSlider" parent="Opcoes/VBoxContainer"]
+[node name="GeralSlider" type="HSlider" parent="Opcoes/VBoxContainer" unique_id=878978062]
 layout_mode = 2
 min_value = -80.0
 max_value = 0.0
 
-[node name="MusicaLabel" type="Label" parent="Opcoes/VBoxContainer"]
+[node name="MusicaLabel" type="Label" parent="Opcoes/VBoxContainer" unique_id=2057975404]
 layout_mode = 2
 text = "Music:"
 
-[node name="MusicaSlider" type="HSlider" parent="Opcoes/VBoxContainer"]
+[node name="MusicaSlider" type="HSlider" parent="Opcoes/VBoxContainer" unique_id=1560310767]
 layout_mode = 2
 min_value = -80.0
 max_value = 0.0
 
-[node name="SFXLabel" type="Label" parent="Opcoes/VBoxContainer"]
+[node name="SFXLabel" type="Label" parent="Opcoes/VBoxContainer" unique_id=414308105]
 layout_mode = 2
 text = "SFX:"
 
-[node name="SFXSlider" type="HSlider" parent="Opcoes/VBoxContainer"]
+[node name="SFXSlider" type="HSlider" parent="Opcoes/VBoxContainer" unique_id=1938645587]
 layout_mode = 2
 min_value = -80.0
 max_value = 0.0
 
-[node name="Voltar" type="Button" parent="Opcoes/VBoxContainer"]
+[node name="Voltar" type="Button" parent="Opcoes/VBoxContainer" unique_id=2037823955]
 layout_mode = 2
 text = "Return"
 
-[node name="CoisasIniciais" type="Control" parent="."]
+[node name="CoisasIniciais" type="Control" parent="." unique_id=1341530609]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -199,7 +199,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_l5uqn")
 
-[node name="Panel" type="Panel" parent="CoisasIniciais"]
+[node name="Panel" type="Panel" parent="CoisasIniciais" unique_id=834724100]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,11 +208,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bfrjk")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CoisasIniciais"]
-libraries = {
-&"": SubResource("AnimationLibrary_ekcqx")
-}
-autoplay = "Inicial"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CoisasIniciais" unique_id=2132732123]
+libraries/ = SubResource("AnimationLibrary_ekcqx")
+autoplay = &"Inicial"
 
 [connection signal="pressed" from="MenuInicial/VBoxContainer/Start" to="Node" method="_on_start_pressed"]
 [connection signal="pressed" from="MenuInicial/VBoxContainer/Options" to="Node" method="_on_options_pressed"]
