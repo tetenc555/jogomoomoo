@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		if powerup_atual == GameManager.PowerUpType.NENHUM:
 			velocity.y = JUMP_VELOCITY
 		else:
-			velocity.y = JUMP_VELOCITY + 100
+			velocity.y = JUMP_VELOCITY + 50
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
