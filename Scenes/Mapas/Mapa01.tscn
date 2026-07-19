@@ -981,8 +981,11 @@ texture = ExtResource("6_bdecc")
 16:8/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_h4t55"]
-sources/1 = SubResource("TileSetAtlasSource_v7543")
-sources/2 = SubResource("TileSetAtlasSource_mmsis")
+sources/1 = SubResource("TileSetAtlasSource_bdecc")
+sources/2 = SubResource("TileSetAtlasSource_v7543")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jccjc"]
+size = Vector2(15, 11)
 
 [node name="Mapa02" type="Node2D" unique_id=45277016]
 script = SubResource("GDScript_3qrxq")
@@ -1024,7 +1027,7 @@ position = Vector2(288, -47)
 position = Vector2(689, -47)
 
 [node name="Lenhador" parent="." unique_id=1943549179 instance=ExtResource("6_dats3")]
-position = Vector2(192, -50)
+position = Vector2(184, -54)
 
 [node name="Lenhador2" parent="." unique_id=1156918121 instance=ExtResource("6_dats3")]
 position = Vector2(539, -55)
@@ -1037,3 +1040,41 @@ position = Vector2(882, 20)
 
 [node name="Lenhador4" parent="." unique_id=30871441 instance=ExtResource("6_dats3")]
 position = Vector2(989, 16)
+
+[node name="PlacaDica2" type="Area2D" parent="." unique_id=538019896]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacaDica2" unique_id=1711571544]
+position = Vector2(616, -71)
+shape = SubResource("RectangleShape2D_jccjc")
+
+[node name="PlacaDica4" type="Area2D" parent="." unique_id=738531062]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacaDica4" unique_id=1825591632]
+position = Vector2(921, 9)
+shape = SubResource("RectangleShape2D_jccjc")
+
+[node name="PlacaDica3" type="Area2D" parent="." unique_id=376259698]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacaDica3" unique_id=112184476]
+position = Vector2(1208, -71)
+shape = SubResource("RectangleShape2D_jccjc")
+
+[node name="PlacaDicaMachado" type="Area2D" parent="." unique_id=1257110477]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacaDicaMachado" unique_id=1736018876]
+position = Vector2(233, -56)
+shape = SubResource("RectangleShape2D_jccjc")
+
+[connection signal="body_entered" from="PlacaDica2" to="." method="_on_placa_dica_2_body_entered"]
+[connection signal="body_entered" from="PlacaDica4" to="." method="_on_placa_dica_4_body_entered"]
+[connection signal="body_entered" from="PlacaDica3" to="." method="_on_placa_dica_3_body_entered"]
+[connection signal="area_entered" from="PlacaDicaMachado" to="." method="_on_placa_dica_machado_area_entered"]
+[connection signal="body_entered" from="PlacaDicaMachado" to="." method="_on_placa_dica_machado_body_entered"]
