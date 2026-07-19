@@ -5,7 +5,7 @@ extends Node2D
 func _ready() -> void:
 	GameManager.isDialog = true;
 	var meu_dialogo = preload("res://Dialogues/HistoriaInicial.dialogue")
-	DialogueManager.show_dialogue_balloon(meu_dialogo, "historiaInicial")
+	DialogueManager.show_dialogue_balloon(meu_dialogo, "historiaMapa01")
 	await DialogueManager.dialogue_ended
 	GameManager.isDialog = false;
 

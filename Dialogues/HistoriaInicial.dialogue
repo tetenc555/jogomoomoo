@@ -1,5 +1,15 @@
-~ historiaInicial
-Ze Vaquinha esta sem agua.
-Ze vaquinha esta triste
+~ historiaMapa01
+Uma empresa capitalista do mal está contruindo uma represa...
+E agora toda água da casa da vaquinha Mimosa acabou!
+Agora, ela precisar buscar água no rio, enfretando diversos desafios!
+Você precisa ajudá-la!
+=> END
 
+~ dicaMachado
+MALVADO CORP & CIA: Aperte "X" para derrubar as árvores com o machado. 
+MALVADO CORP & CIA: Não aperte "X" com o machado apontado para seus colegas. Risco de justa-causa.
+=> END
+
+~ dicaArma
+MALVADO CORP & CIA: Derrube sua arma e pule a árvore caso ela esteja no seu caminho. Armas derrubadas são descontadas do seu salário
 => END
