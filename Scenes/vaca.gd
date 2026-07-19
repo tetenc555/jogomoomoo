@@ -19,7 +19,7 @@ func atualizar_posicao_ataque():
 	var direcao = get_direction()
 	
 	if direcao == -1:
-		machadoArea.position.x = -33.5 # <--- Teste aumentar esse valor
+		machadoArea.position.x = -31.5 # <--- Teste aumentar esse valor
 		
 	else:
 		machadoArea.position.x = 0.0   # <--- Teste diminuir esse valor
