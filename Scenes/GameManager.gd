@@ -16,3 +16,6 @@ func dialogo(nomeDialogo):
 	DialogueManager.show_dialogue_balloon(meu_dialogo,nomeDialogo)
 	await DialogueManager.dialogue_ended
 	GameManager.isDialog = false;
+
+func reset_scene():
+	get_tree().reload_current_scene()

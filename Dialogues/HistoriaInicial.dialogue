@@ -15,6 +15,13 @@ MALVADO CORP & CIA: As vezes, nao podemos cobrir as taxas para derrubar uma árv
 MALVADO CORP & CIA: Obs: Itens derrubados serão cobrados do salário posteriormente.
 => END
 
+~ dicaPlaca3
+MALVADO CORP & CIA: Machados são tão letais quanto pulos na cabeça. Tome cuidado com o próximo no horário de trabalho.
+=> END
+
+~ dicaPlaca4
+MALVADO CORP & CIA: Prossiga para chegar à represa...
+
 ~ dicaArma
 MALVADO CORP & CIA: Derrube sua arma (Q) e pule a árvore caso ela esteja no seu caminho. Armas derrubadas são descontadas do seu salário
 => END
