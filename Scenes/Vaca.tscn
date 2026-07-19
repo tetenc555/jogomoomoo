@@ -1,22 +1,49 @@
 [gd_scene format=3 uid="uid://bcdclxqftbei0"]
 
 [ext_resource type="Script" uid="uid://6x78cfi1itt5" path="res://Scenes/vaca.gd" id="1_yar7j"]
-[ext_resource type="Texture2D" uid="uid://ck48ugq7m8mwp" path="res://Assets/placeholder_vaca.png" id="2_gtc4r"]
+[ext_resource type="Texture2D" uid="uid://d0ioc4nejlwv2" path="res://Assets/vaca/STAND_IZQ.png" id="2_qhgi5"]
+[ext_resource type="Texture2D" uid="uid://coi3m5a5jbsnl" path="res://Assets/vaca/STAND_IZQ_WALK.png" id="3_ip8sf"]
+[ext_resource type="Texture2D" uid="uid://cu5lespm4ae7d" path="res://Assets/vaca/fall_1.png" id="4_dtb2m"]
+[ext_resource type="Texture2D" uid="uid://fi570c5ecv0o" path="res://Assets/vaca/jump_1.png" id="5_ykpri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jccjc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jd1uw"]
-atlas = ExtResource("2_gtc4r")
-region = Rect2(0, 0, 32, 32)
+size = Vector2(16, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jccjc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jd1uw")
+"texture": ExtResource("2_qhgi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ip8sf")
 }],
 "loop": 1,
 "name": &"andando_normal",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dtb2m")
+}],
+"loop": 1,
+"name": &"caindo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qhgi5")
+}],
+"loop": 1,
+"name": &"idle_normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ykpri")
+}],
+"loop": 1,
+"name": &"pulando",
 "speed": 5.0
 }]
 
@@ -29,19 +56,19 @@ collision_mask = 15
 script = ExtResource("1_yar7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1636382782]
-position = Vector2(0, -10)
+position = Vector2(1, -10)
 shape = SubResource("RectangleShape2D_jccjc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1977770381]
-position = Vector2(0, -10)
-scale = Vector2(0.62500006, 0.625)
+position = Vector2(0.49999958, -9)
+scale = Vector2(0.65625006, 0.6875)
 sprite_frames = SubResource("SpriteFrames_jccjc")
-animation = &"andando_normal"
+animation = &"idle_normal"
 
 [node name="MachadoArea" type="Area2D" parent="." unique_id=1589254560]
 collision_layer = 16
 collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MachadoArea" unique_id=1823833828]
-position = Vector2(19, -10)
+position = Vector2(18, -10)
 shape = SubResource("RectangleShape2D_05mi4")

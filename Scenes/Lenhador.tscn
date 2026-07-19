@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dln2smt8urmnj"]
 
 [ext_resource type="Script" uid="uid://c1wtmpskxhob0" path="res://Scenes/lenhador.gd" id="1_pkipt"]
-[ext_resource type="Texture2D" uid="uid://bs324p2e4w2r7" path="res://lenhador.jpg" id="2_rqugw"]
+[ext_resource type="Texture2D" uid="uid://bw4pravb4vqkg" path="res://Assets/lenhador_walking_sheet.png" id="2_rqugw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csc1j"]
 size = Vector2(20, 10)
@@ -9,19 +9,74 @@ size = Vector2(20, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqugw"]
 size = Vector2(6, 4)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_clr34"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tocc3"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akvec"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi2ax"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diqhh"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idd2v"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7346s"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u16fq"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxyo4"]
+atlas = ExtResource("2_rqugw")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkipt"]
 animations = [{
-"frames": [],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rqugw")
+"texture": SubResource("AtlasTexture_clr34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tocc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akvec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi2ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diqhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idd2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7346s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u16fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxyo4")
 }],
 "loop": 1,
-"name": &"new_animation",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -50,10 +105,10 @@ position = Vector2(-10, -10)
 target_position = Vector2(-8, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759629538]
-position = Vector2(-6.03497e-07, -10.000001)
-scale = Vector2(0.012500001, 0.011764705)
-sprite_frames = SubResource("SpriteFrames_csc1j")
-animation = &"new_animation"
+position = Vector2(1.87, -8.465)
+scale = Vector2(0.625, 0.53125)
+sprite_frames = SubResource("SpriteFrames_pkipt")
+frame_progress = 0.7975449
 
 [node name="FloorDetector" type="RayCast2D" parent="." unique_id=1170075840]
 position = Vector2(-11, 0)

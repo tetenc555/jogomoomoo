@@ -1,16 +1,14 @@
-[gd_scene format=4 uid="uid://ccrsiguc7hepo"]
+[gd_scene format=4 uid="uid://bsp6fpwxfpb63"]
 
-[ext_resource type="PackedScene" uid="uid://xvu5pk8sbcc0" path="res://Scenes/collectible_item.tscn" id="1_dtjil"]
-[ext_resource type="PackedScene" uid="uid://bcdclxqftbei0" path="res://Scenes/Vaca.tscn" id="1_hkjmy"]
-[ext_resource type="Texture2D" uid="uid://bcivrtllygfos" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/midground_/summer_.png" id="2_641c7"]
-[ext_resource type="Texture2D" uid="uid://cm6jbcblcq7cq" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/foreground_/foreground_.png" id="3_vdu3c"]
-[ext_resource type="PackedScene" uid="uid://dln2smt8urmnj" path="res://Scenes/Lenhador.tscn" id="5_5qywf"]
-[ext_resource type="PackedScene" uid="uid://1ma223rfj12" path="res://Scenes/Barrier.tscn" id="6_we14d"]
-[ext_resource type="PackedScene" uid="uid://bxh8mkmutdyhn" path="res://Scenes/Tree.tscn" id="7_tfaud"]
-[ext_resource type="PackedScene" uid="uid://dc0h2gjpufjmy" path="res://Scenes/Caçador.tscn" id="8_4l7l4"]
+[ext_resource type="Script" uid="uid://8i5jpf174ngs" path="res://Scenes/Mapas/mapa01.gd" id="1_bdecc"]
+[ext_resource type="PackedScene" uid="uid://xvu5pk8sbcc0" path="res://Scenes/collectible_item.tscn" id="2_v7543"]
+[ext_resource type="PackedScene" uid="uid://bcdclxqftbei0" path="res://Scenes/Vaca.tscn" id="3_mmsis"]
+[ext_resource type="Texture2D" uid="uid://bcivrtllygfos" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/midground_/summer_.png" id="4_vv84o"]
+[ext_resource type="Texture2D" uid="uid://cm6jbcblcq7cq" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/foreground_/foreground_.png" id="5_22il8"]
+[ext_resource type="PackedScene" uid="uid://bxh8mkmutdyhn" path="res://Scenes/Tree.tscn" id="8_bqs6d"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vdu3c"]
-texture = ExtResource("2_641c7")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hf8x6"]
+texture = ExtResource("4_vv84o")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.8992939, 8, -0.8992939, 8, 8, -8, 8)
 1:0/0 = 0
@@ -552,8 +550,8 @@ texture = ExtResource("2_641c7")
 11:19/0 = 0
 11:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dtjil"]
-texture = ExtResource("3_vdu3c")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fadt5"]
+texture = ExtResource("5_22il8")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -618,40 +616,32 @@ texture = ExtResource("3_vdu3c")
 5:7/0 = 0
 6:7/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_jccjc"]
+[sub_resource type="TileSet" id="TileSet_jd0lx"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 15
-sources/0 = SubResource("TileSetAtlasSource_vdu3c")
-sources/1 = SubResource("TileSetAtlasSource_dtjil")
+sources/0 = SubResource("TileSetAtlasSource_hf8x6")
+sources/1 = SubResource("TileSetAtlasSource_fadt5")
 
-[node name="Jogo" type="Node2D" unique_id=1469865509]
+[node name="Mapa01" type="Node2D" unique_id=45277016]
+script = ExtResource("1_bdecc")
 
-[node name="Collectible item" parent="." unique_id=1374150909 instance=ExtResource("1_dtjil")]
-position = Vector2(62, 1)
+[node name="Player" parent="." unique_id=1905277663 instance=ExtResource("3_mmsis")]
+position = Vector2(203, -63)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1768835647]
+zoom = Vector2(4, 4)
+limit_left = -159
+position_smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1161669328]
+position = Vector2(1, 0)
+tile_map_data = PackedByteArray("AAD+/wEAAAAHAAIAAAD//wEAAAAHAAIAAAD//wIAAAAHAAMAAAAAAAEAAAAHAAIAAAAAAAIAAAAHAAMAAAABAAEAAAAHAAIAAAABAAIAAAAHAAMAAAACAAEAAAAHAAIAAAACAAIAAAAHAAMAAAD+/wIAAAAHAAMAAAADAAEAAAAHAAIAAAADAAIAAAAHAAMAAAAEAAIAAAAHAAMAAAAEAAEAAAAHAAIAAAAFAAIAAAAHAAMAAAAFAAEAAAAHAAIAAAD9/wEAAAAHAAIAAAD9/wIAAAAHAAMAAAD8/wEAAAAHAAIAAAD8/wIAAAAHAAMAAAD7/wEAAAAHAAIAAAD7/wIAAAAHAAMAAAD6/wEAAAAHAAIAAAD6/wIAAAAHAAMAAAD5/wEAAAAHAAIAAAD5/wIAAAAHAAMAAAD4/wEAAAAHAAIAAAD4/wIAAAAHAAMAAAD3/wEAAAAHAAIAAAD3/wIAAAAHAAMAAAD2/wEAAAAHAAIAAAD2/wIAAAAHAAMAAAAGAAEAAAAHAAIAAAAGAAIAAAAHAAMAAAAHAAEAAAAHAAIAAAAHAAIAAAAHAAMAAAAIAAEAAAAHAAIAAAAIAAIAAAAHAAMAAAAJAAEAAAAHAAIAAAAJAAIAAAAHAAMAAAACAAAAAAAFAAIAAAAFAAAAAAAFAAQAAAAFAP//AAAFAAMAAAAIAP7/AAAFAAMAAAAIAP//AAAFAAQAAAAKAAIAAAAGAAMAAAAKAAEAAAAGAAMAAAAKAAAAAAAGAAMAAAAKAP//AAAGAAMAAAAKAP7/AAAGAAMAAAAKAP3/AAAGAAIAAAALAP3/AAAHAAIAAAAMAP3/AAAHAAIAAAANAP3/AAAHAAIAAAAOAP3/AAAHAAIAAAAPAP3/AAAHAAIAAAAQAP3/AAAHAAIAAAARAP3/AAAHAAIAAAAbAP3/AAAHAAIAAAASAP7/AAAHAAIAAAATAP7/AAAIAAIAAAATAP//AAAIAAMAAAA=")
+tile_set = SubResource("TileSet_jd0lx")
+
+[node name="Tree" parent="." unique_id=411317137 instance=ExtResource("8_bqs6d")]
+position = Vector2(288, -47)
+
+[node name="Collectible item" parent="." unique_id=1374150909 instance=ExtResource("2_v7543")]
+position = Vector2(249.81143, -70.82254)
 type = 1
-
-[node name="Player" parent="." unique_id=1688416782 instance=ExtResource("1_hkjmy")]
-position = Vector2(13, 3)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=547942262]
-zoom = Vector2(2, 2)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1558131092]
-tile_map_data = PackedByteArray("AAD+/wEAAAAHAAIAAAD//wEAAAAHAAIAAAD//wIAAAAHAAMAAAAAAAEAAAAHAAIAAAAAAAIAAAAHAAMAAAABAAEAAAAHAAIAAAABAAIAAAAHAAMAAAACAAEAAAAHAAIAAAACAAIAAAAHAAMAAAD+/wIAAAAHAAMAAAADAAEAAAAHAAIAAAADAAIAAAAHAAMAAAAEAAIAAAAHAAMAAAAEAAEAAAAHAAIAAAAFAAIAAAAIAAMAAAAFAAEAAAAIAAIAAAD9/wEAAAAHAAIAAAD9/wIAAAAHAAMAAAD8/wEAAAAHAAIAAAD8/wIAAAAHAAMAAAD7/wEAAAAHAAIAAAD7/wIAAAAHAAMAAAD6/wEAAAAGAAIAAAD6/wIAAAAGAAMAAAA=")
-tile_set = SubResource("TileSet_jccjc")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1589584424]
-tile_map_data = PackedByteArray("AAD+/wEAAAABABAAAAAFAAEAAAACABAAAAD//wEAAAABABAAAAAAAAEAAAABABAAAAABAAEAAAABABAAAAACAAEAAAABABAAAAADAAEAAAABABAAAAAEAAEAAAABABAAAAD6/wEAAAAAABAAAAD7/wEAAAABABAAAAD8/wEAAAABABAAAAD9/wEAAAABABAAAAA=")
-tile_set = SubResource("TileSet_jccjc")
-
-[node name="Lenhador" parent="." unique_id=1943549179 instance=ExtResource("5_5qywf")]
-position = Vector2(-128, -57)
-
-[node name="Barrier" parent="." unique_id=208501601 instance=ExtResource("6_we14d")]
-position = Vector2(-108, -14)
-
-[node name="Caçador" parent="." unique_id=2047226864 instance=ExtResource("8_4l7l4")]
-position = Vector2(-58, 5)
-
-[node name="Tree" parent="." unique_id=411317137 instance=ExtResource("7_tfaud")]
-position = Vector2(97, 16)

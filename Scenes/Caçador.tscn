@@ -1,25 +1,58 @@
 [gd_scene format=3 uid="uid://dc0h2gjpufjmy"]
 
 [ext_resource type="Script" uid="uid://cvjdi3hpjxkvr" path="res://Scenes/caçador.gd" id="1_3cn7e"]
-[ext_resource type="Texture2D" uid="uid://bs324p2e4w2r7" path="res://lenhador.jpg" id="2_r61lp"]
+[ext_resource type="Texture2D" uid="uid://3hshhapccfp0" path="res://Assets/hunter.png" id="2_r61lp"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfktg"]
+atlas = ExtResource("2_r61lp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1me8v"]
+atlas = ExtResource("2_r61lp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl0xu"]
+atlas = ExtResource("2_r61lp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oou0k"]
+atlas = ExtResource("2_r61lp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0ddx"]
+atlas = ExtResource("2_r61lp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l7l4"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfktg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1me8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl0xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oou0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0ddx")
+}],
+"loop": 1,
+"name": &"andando",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_r61lp")
-}],
-"loop": 1,
-"name": &"placeholder",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csc1j"]
+size = Vector2(14, 20)
 
 [node name="Caçador" type="CharacterBody2D" unique_id=2047226864 groups=["Inimigos"]]
 collision_layer = 2
@@ -28,29 +61,33 @@ up_direction = Vector2(0, 1)
 script = ExtResource("1_3cn7e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1921466983]
-position = Vector2(-0.101562455, -9.898438)
-scale = Vector2(0.012626953, 0.011884191)
-sprite_frames = SubResource("SpriteFrames_csc1j")
-animation = &"placeholder"
+position = Vector2(3, -10)
+scale = Vector2(0.625, 0.62500006)
+sprite_frames = SubResource("SpriteFrames_4l7l4")
+animation = &"andando"
+frame_progress = 0.33382237
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=148214411]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_csc1j")
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=277552264]
-position = Vector2(-10, -10)
-target_position = Vector2(-8, 0)
+position = Vector2(8, -10)
+target_position = Vector2(8, 0)
 
 [node name="FloorDetector" type="RayCast2D" parent="." unique_id=541209653]
-position = Vector2(-11, 0)
+position = Vector2(8, -1)
 target_position = Vector2(0, 16)
 
 [node name="VisionRay" type="RayCast2D" parent="." unique_id=312300703]
-position = Vector2(-10, -10)
-target_position = Vector2(-250, 0)
+position = Vector2(8, -10)
+target_position = Vector2(250, 0)
+collision_mask = 4
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1660138706]
 position = Vector2(0, -5)
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=360384970]
 wait_time = 1.2
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -5,8 +5,10 @@ const JUMP_VELOCITY = -200.0
 var direction := 1
 var dead := false
 var player : CharacterBody2D = null
+var lost_sight_time := 0.0
+const LOST_SIGHT_DELAY := 0.5
 
-@export var bullet_scene : PackedScene
+@export var bullet_scene : PackedScene = preload("res://Scenes/Bullet.tscn")
 
 @onready var sprite = $AnimatedSprite2D
 @onready var wall_detector = $WallDetector
@@ -14,7 +16,7 @@ var player : CharacterBody2D = null
 @onready var vision_ray = $VisionRay
 @onready var shoot_point = $ShootPoint
 @onready var shoot_timer = $ShootTimer
-var item_scene = preload("res://Scenes/collectibles/collectible_item.tscn")
+var item_scene = preload("res://Scenes/collectible_item.tscn")
 
 func get_direction():
 	if sprite.flip_h == false:
@@ -22,10 +24,10 @@ func get_direction():
 	else: 
 		return -1
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
+	print(player)
 
 func patrol():
 	velocity.x = direction * SPEED
@@ -35,64 +37,87 @@ func patrol():
 func turn():
 	direction *= -1
 	sprite.flip_h = direction < 0
-	wall_detector.target_position.x *= -1
-	wall_detector.position.x *= -1
 	
-	floor_detector.position.x *= -1
+	wall_detector.target_position.x = 12*direction
+	wall_detector.position.x = 11*direction
 	
-	vision_ray.target_position.x *= -1
-	shoot_point.position.x *= -1
+	floor_detector.position.x = 11*direction
+	
+	vision_ray.target_position.x = 300*direction
+	shoot_point.position.x = 10*direction
 
 func can_see_player() -> bool:
+	if player == null:
+		print("Player é null")
+		return false
 	
 	var distance = player.global_position - self.global_position
+	print("Distancia: ", distance)
+	
 	if abs(distance.x) > 300:
+		print("Longe")
 		return false
-	if sign(distance.x) != direction:	
+	
+	if sign(distance.x) != direction:
+		print("Jogador atras")
 		return false
+	
 	vision_ray.target_position = distance
-	if(vision_ray.is_colliding()):
-		return vision_ray.get_collider() == player
+	vision_ray.force_raycast_update()
+	
+	if !vision_ray.is_colliding():
+		print("Raio nao colidindo")
+		return false
+	var collider = vision_ray.get_collider()
+	print("Raio bateu em:", collider)
+	
+	if collider == player:
+		print("Enxerga o jogador")
+		return true
+	
 	return false
 
 func _on_shoot_timer_timeout():
+	print("Timer disparou")
 	if can_see_player():
+		print("Caçador atira")
 		shoot()
 
 func shoot():
+	print("Atirando")
 	var bullet = bullet_scene.instantiate()
 	
-	bullet.playerShoot = false
+	bullet.hunterShoot = true
 	bullet.global_position = shoot_point.global_position
 	
 	if direction == -1:
-		bullet.direction = Vector2.LEFT
 		bullet.set_speed(-1)
 	else:
-		bullet.direction = Vector2.RIGHT
+		bullet.set_speed(1)
 	get_tree().current_scene.add_child(bullet)
 
 func _physics_process(delta: float) -> void:
 	if dead:
 		return
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	velocity.x = direction * SPEED
-	
 	if can_see_player():
-		
+		lost_sight_time = 0.0
 		velocity.x = 0
-		
 		if shoot_timer.is_stopped():
+			#print("Iniciando timer")
 			shoot_timer.start()
-		else:
+	else:
+		lost_sight_time += delta
+		if lost_sight_time > LOST_SIGHT_DELAY:
+			patrol()
 			if !shoot_timer.is_stopped():
 				shoot_timer.stop()
 	
 	move_and_slide()
+	setAnimation(velocity.x, velocity.y)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -127,3 +152,14 @@ func _on_head_body_entered(body: Node2D) -> void:
 		velocity = Vector2.ZERO
 		die()
 		body.velocity.y = -350
+
+func setAnimation(velocity_X, velocity_Y):
+	if self.vision_ray.target_position.x > 0:
+		sprite.flip_h = false
+	elif self.vision_ray.target_position.x < 0:
+		sprite.flip_h = true
+	if velocity_Y == 0:
+		if velocity_X != 0:
+			sprite.play("andando")
+		else:
+			sprite.pause()

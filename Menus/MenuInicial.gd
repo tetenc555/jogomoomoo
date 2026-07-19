@@ -4,7 +4,7 @@ extends Node
 
 @onready var menu_inicial: Control = $"../MenuInicial"
 @onready var opcoes: Control = $"../Opcoes"
-@export var proxCena : PackedScene
+@export var proxCena : PackedScene = preload("res://Scenes/Mapas/Mapa01.tscn")
 
 func _ready() -> void:
 	$"../Opcoes/VBoxContainer/GeralSlider".value = GameController.configuracoes.audioMaster

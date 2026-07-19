@@ -11,13 +11,15 @@ const JUMP_VELOCITY = -300.0
 var powerup_atual = GameManager.PowerUpType.NENHUM
 @onready var sprite = $AnimatedSprite2D
 @onready var machadoArea = $MachadoArea
+@onready var camera2d = $Camera2D
 @onready var machado_distancia_x: float = abs(machadoArea.position.x)
+
 
 func atualizar_posicao_ataque():
 	var direcao = get_direction()
 	
 	if direcao == -1:
-		machadoArea.position.x = -38.5  # <--- Teste aumentar esse valor
+		machadoArea.position.x = -33.5 # <--- Teste aumentar esse valor
 		
 	else:
 		machadoArea.position.x = 0.0   # <--- Teste diminuir esse valor
@@ -82,8 +84,11 @@ func take_damage(amount: int, enemy_position: Vector2):
 func die():
 	
 	dead = true
+	sprite.flip_v=true;
 	collision_layer = 0
 	collision_mask = 0
+	camera2d.reparent(self.get_parent());
+	camera2d.global_position = self.global_position;
 	$CollisionShape2D.disabled = true
 	
 	velocity = Vector2.ZERO
@@ -159,5 +164,8 @@ func machadada():
 	var corpos_dentro = machadoArea.get_overlapping_bodies()
 	
 	for body in corpos_dentro:
-		if(body.is_in_group("Inimigos") || body.name=="Tree"):
+		if(body.is_in_group("Inimigos")):
+			body.die()
+		if(body.name=="Tree" || body.name == "Barrier"):
+			self.changePowerUp(GameManager.PowerUpType.NENHUM)
 			body.die();
