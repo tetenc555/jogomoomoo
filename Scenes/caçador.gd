@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void:
 	if can_see_player():
 		velocity.x = 0
 		if shoot_timer.is_stopped():
-			print("Iniciando timer")
+			#print("Iniciando timer")
 			shoot_timer.start()
 	else:
 		patrol()
@@ -112,6 +112,7 @@ func _physics_process(delta: float) -> void:
 			shoot_timer.stop()
 	
 	move_and_slide()
+	setAnimation(velocity.x, velocity.y)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -146,3 +147,14 @@ func _on_head_body_entered(body: Node2D) -> void:
 		velocity = Vector2.ZERO
 		die()
 		body.velocity.y = -350
+
+func setAnimation(velocity_X, velocity_Y):
+	if self.vision_ray.target_position.x > 0:
+		sprite.flip_h = false
+	elif self.vision_ray.target_position.x < 0:
+		sprite.flip_h = true
+	if velocity_Y == 0:
+		if velocity_X != 0:
+			sprite.play("andando")
+		else:
+			sprite.pause()
