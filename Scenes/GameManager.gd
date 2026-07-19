@@ -7,3 +7,5 @@ const POWERUP_NAMES = {
 	PowerUpType.MACHADO: "machado",
 	PowerUpType.ARMA: "arma"
 }
+
+var isDialog: bool
