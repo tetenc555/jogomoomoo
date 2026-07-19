@@ -16,16 +16,24 @@ MALVADO CORP & CIA: Obs: Itens derrubados serão cobrados do salário posteriorm
 => END
 
 ~ dicaPlaca3
-MALVADO CORP & CIA: Machados são tão letais quanto pulos na cabeça. Tome cuidado com o próximo no horário de trabalho.
+MALVADO CORP & CIA: Se você se encontrar preso em uma área, aperte R para voltar ao estado salvo seguro. Isso causará perca de horas trabalhadas que não serão remuneradas
 => END
 
 ~ dicaPlaca4
 MALVADO CORP & CIA: Prossiga para chegar à represa...
-
-~ dicaArma
-MALVADO CORP & CIA: Derrube sua arma (Q) e pule a árvore caso ela esteja no seu caminho. Armas derrubadas são descontadas do seu salário
+=> END
+~ dicaCacadores
+MALVADO CORP & CIA: Treinamos nosso caçadores para que sejam mais protegidos. Logo, eles só morrem com ataques de itens letais.
+MALVADO CORP & CIA: Por isso não atire ou de uma machadada nos seus colegas!
 => END
 
+~ dicaMachadoRepetido
+MALVADO CORP & CIA: Não derrube uma árvore já derrubada. Não cobriremos machados perdidos por estupidez.
+=> END
 ~ dicaArma2
 MALVADO CORP & CIA: Malvado curiosidades: Vacas não sabem recarregar espingardas
+=> END
+
+~ dicaRepresa
+MALVADO CORP & CIA: Represa adiante! Proibido o uso de machados perto da represa.
 => END
