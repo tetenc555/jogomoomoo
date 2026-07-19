@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dc0h2gjpufjmy"]
 
 [ext_resource type="Script" uid="uid://cvjdi3hpjxkvr" path="res://Scenes/caçador.gd" id="1_3cn7e"]
+[ext_resource type="PackedScene" uid="uid://br38iq5qhu5we" path="res://Scenes/Bullet.tscn" id="2_pfktg"]
 [ext_resource type="Texture2D" uid="uid://bs324p2e4w2r7" path="res://lenhador.jpg" id="2_r61lp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
@@ -26,6 +27,7 @@ collision_layer = 2
 collision_mask = 9
 up_direction = Vector2(0, 1)
 script = ExtResource("1_3cn7e")
+bullet_scene = ExtResource("2_pfktg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1921466983]
 position = Vector2(-0.101562455, -9.898438)
@@ -42,12 +44,13 @@ position = Vector2(-10, -10)
 target_position = Vector2(-8, 0)
 
 [node name="FloorDetector" type="RayCast2D" parent="." unique_id=541209653]
-position = Vector2(-11, 0)
+position = Vector2(12, -1)
 target_position = Vector2(0, 16)
 
 [node name="VisionRay" type="RayCast2D" parent="." unique_id=312300703]
 position = Vector2(-10, -10)
 target_position = Vector2(-250, 0)
+collision_mask = 4
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1660138706]
 position = Vector2(0, -5)
