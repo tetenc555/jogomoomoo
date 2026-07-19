@@ -21,4 +21,6 @@ func die() -> void:
 		var tween = create_tween()
 		tween.tween_property(self, "modulate:a", 0.0, 1.0)
 		await tween.finished
+		SceneController.changeSceneTo(load("res://Scenes/Mapas/Mapa03.tscn"),"CircleToon")
 		queue_free()
+		
