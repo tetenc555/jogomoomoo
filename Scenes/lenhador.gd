@@ -2,6 +2,13 @@ extends CharacterBody2D
 
 const SPEED = 50.0
 const JUMP_VELOCITY = -200.0
+var item_scene = preload("res://Scenes/collectibles/collectible_item.tscn")
+
+func get_direction():
+	if sprite.flip_h == false:
+		return 1
+	else: 
+		return -1
 
 func _physics_process(delta: float) -> void:
 	if dead:
@@ -50,12 +57,17 @@ func die():
 	$CollisionShape2D.disabled = true
 	
 	velocity = Vector2.ZERO
-	
+	var instantied_item = item_scene.instantiate()
+	instantied_item.type = GameManager.PowerUpType.MACHADO
+	instantied_item.global_position = self.global_position + Vector2(25 * get_direction(), 0)
+	get_parent().add_child(instantied_item)
+	if instantied_item.has_method("aplicar_impulso_drop"):
+		instantied_item.aplicar_impulso_drop(get_direction())
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	await tween.finished
-	
 	queue_free()
+	
 
 func _on_head_body_entered(body: Node2D) -> void:
 	if dead:

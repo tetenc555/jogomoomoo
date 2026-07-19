@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cm6jbcblcq7cq" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/foreground_/foreground_.png" id="3_vdu3c"]
 [ext_resource type="PackedScene" uid="uid://dln2smt8urmnj" path="res://Scenes/Lenhador.tscn" id="5_5qywf"]
 [ext_resource type="PackedScene" uid="uid://bxh8mkmutdyhn" path="res://Scenes/Tree.tscn" id="6_we14d"]
+[ext_resource type="PackedScene" uid="uid://dc0h2gjpufjmy" path="res://Scenes/Caçador.tscn" id="6_we14d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vdu3c"]
 texture = ExtResource("2_641c7")
@@ -644,6 +645,9 @@ tile_set = SubResource("TileSet_jccjc")
 
 [node name="Lenhador" parent="." unique_id=1943549179 instance=ExtResource("5_5qywf")]
 position = Vector2(-64, -15)
+
+[node name="Caçador" parent="." unique_id=2047226864 instance=ExtResource("6_we14d")]
+position = Vector2(-18, 11)
 
 [node name="Tree" parent="." unique_id=2013441156 instance=ExtResource("6_we14d")]
 position = Vector2(95, 17)
