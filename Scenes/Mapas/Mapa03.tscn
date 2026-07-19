@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cxh15sjt25dwe"]
 
 [ext_resource type="PackedScene" uid="uid://bxh8mkmutdyhn" path="res://Scenes/Tree.tscn" id="1_t8vin"]
+[ext_resource type="Script" uid="uid://bycwj3q8gtqx3" path="res://Scenes/Mapas/mapa_03.gd" id="1_wk1i1"]
 [ext_resource type="Texture2D" uid="uid://bcivrtllygfos" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/midground_/summer_.png" id="2_wk1i1"]
 [ext_resource type="Texture2D" uid="uid://cm6jbcblcq7cq" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/foreground_/foreground_.png" id="3_c7wnw"]
 [ext_resource type="Texture2D" uid="uid://cewlls62vmf18" path="res://Assets/fourSeasonsPlatformer_ [tileset, version 2.0]/midground_/autumn_.png" id="4_2axq1"]
@@ -1171,7 +1172,11 @@ sources/1 = SubResource("TileSetAtlasSource_xfufj")
 sources/2 = SubResource("TileSetAtlasSource_leews")
 sources/0 = SubResource("TileSetAtlasSource_wk1i1")
 
-[node name="Mapa02" type="Node2D" unique_id=106730858]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7wnw"]
+size = Vector2(70.5, 23.5)
+
+[node name="Mapa03" type="Node2D" unique_id=106730858]
+script = ExtResource("1_wk1i1")
 
 [node name="Tree" parent="." unique_id=411317137 instance=ExtResource("1_t8vin")]
 position = Vector2(464, -48)
@@ -1197,7 +1202,7 @@ tile_map_data = PackedByteArray("AAD2//z/AAAAABAAAAD3//z/AAABABAAAAD4//z/AAACABA
 tile_set = SubResource("TileSet_ej8t7")
 
 [node name="Player" parent="." unique_id=1905277663 instance=ExtResource("6_gtrwv")]
-position = Vector2(387, -57)
+position = Vector2(-39, -71)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2036317324]
 zoom = Vector2(4, 4)
@@ -1220,3 +1225,13 @@ position = Vector2(126.71254, -38.525284)
 
 [node name="Caçador2" parent="." unique_id=698366844 instance=ExtResource("9_icgs1")]
 position = Vector2(541, -151)
+
+[node name="PlacaDica2" type="Area2D" parent="." unique_id=374418035]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacaDica2" unique_id=1328454077]
+position = Vector2(-118, -79)
+shape = SubResource("RectangleShape2D_c7wnw")
+
+[connection signal="body_entered" from="PlacaDica2" to="." method="_on_placa_dica_2_body_entered"]
