@@ -10,6 +10,15 @@ MALVADO CORP & CIA: Aperte "X" para derrubar as árvores com o machado.
 MALVADO CORP & CIA: Não aperte "X" com o machado apontado para seus colegas. Risco de justa-causa.
 => END
 
+~ dicaPlaca2
+MALVADO CORP & CIA: As vezes, nao podemos cobrir as taxas para derrubar uma árvore. Nesse caso, derrube seu item (Q) e pule por cima dela.
+MALVADO CORP & CIA: Obs: Itens derrubados serão cobrados do salário posteriormente.
+=> END
+
 ~ dicaArma
-MALVADO CORP & CIA: Derrube sua arma e pule a árvore caso ela esteja no seu caminho. Armas derrubadas são descontadas do seu salário
+MALVADO CORP & CIA: Derrube sua arma (Q) e pule a árvore caso ela esteja no seu caminho. Armas derrubadas são descontadas do seu salário
+=> END
+
+~ dicaArma2
+MALVADO CORP & CIA: Malvado curiosidades: Vacas não sabem recarregar espingardas
 => END
