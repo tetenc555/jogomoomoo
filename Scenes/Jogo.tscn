@@ -645,13 +645,13 @@ tile_map_data = PackedByteArray("AAD+/wEAAAABABAAAAAFAAEAAAACABAAAAD//wEAAAABABA
 tile_set = SubResource("TileSet_jccjc")
 
 [node name="Lenhador" parent="." unique_id=1943549179 instance=ExtResource("5_5qywf")]
-position = Vector2(-64, -15)
+position = Vector2(-128, -57)
 
 [node name="Barrier" parent="." unique_id=208501601 instance=ExtResource("6_we14d")]
 position = Vector2(-108, -14)
 
 [node name="Caçador" parent="." unique_id=2047226864 instance=ExtResource("8_4l7l4")]
-position = Vector2(-19, -18)
+position = Vector2(-60, 9)
 
 [node name="Tree" parent="." unique_id=411317137 instance=ExtResource("7_tfaud")]
 position = Vector2(97, 16)
