@@ -20,6 +20,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_placa_dica_2_body_entered(body: Node2D) -> void:
+	GameManager.dialogo(\"final\")
+	await GameManager.dialogo(\"final\")
+	SceneController.changeSceneTo(load(\"res://Menus/MenuInicial.tscn\"),\"CircleToon\")
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hf8x6"]
@@ -838,7 +844,10 @@ texture = ExtResource("5_xkck0")
 [sub_resource type="TileSet" id="TileSet_4pp06"]
 sources/0 = SubResource("TileSetAtlasSource_0eixc")
 
-[node name="Mapa01" type="Node2D" unique_id=45277016]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkck0"]
+size = Vector2(70.5, 23.5)
+
+[node name="Mapa04" type="Node2D" unique_id=45277016]
 script = SubResource("GDScript_3qrxq")
 
 [node name="Player" parent="." unique_id=1905277663 instance=ExtResource("2_0eixc")]
@@ -892,3 +901,13 @@ color = Color(0, 0.6745098, 1, 1)
 
 [node name="Caçador" parent="." unique_id=2047226864 instance=ExtResource("7_xkck0")]
 position = Vector2(-55, 13)
+
+[node name="PlacaDica2" type="Area2D" parent="." unique_id=1990239840]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacaDica2" unique_id=1024249924]
+position = Vector2(-119, 2)
+shape = SubResource("RectangleShape2D_xkck0")
+
+[connection signal="body_entered" from="PlacaDica2" to="." method="_on_placa_dica_2_body_entered"]
