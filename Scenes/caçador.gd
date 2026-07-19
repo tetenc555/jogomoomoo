@@ -85,14 +85,13 @@ func shoot():
 	print("Atirando")
 	var bullet = bullet_scene.instantiate()
 	
-	bullet.playerShoot = false
+	bullet.hunterShoot = true
 	bullet.global_position = shoot_point.global_position
 	
 	if direction == -1:
-		bullet.direction = Vector2.LEFT
 		bullet.set_speed(-1)
 	else:
-		bullet.direction = Vector2.RIGHT
+		bullet.set_speed(1)
 	get_tree().current_scene.add_child(bullet)
 
 func _physics_process(delta: float) -> void:

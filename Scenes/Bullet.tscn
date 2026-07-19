@@ -3,6 +3,17 @@
 [ext_resource type="Script" uid="uid://6acgapubr8u" path="res://Scenes/bullet.gd" id="1_14k46"]
 [ext_resource type="Texture2D" uid="uid://beq23gbn31g3r" path="res://icon.svg" id="1_vlxeq"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jccjc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vlxeq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr8tw"]
 size = Vector2(10, 4)
 
@@ -11,10 +22,10 @@ collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_14k46")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1943233069]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2045602161]
 position = Vector2(0, 2.3841858e-07)
 scale = Vector2(0.07812501, 0.031250004)
-texture = ExtResource("1_vlxeq")
+sprite_frames = SubResource("SpriteFrames_jccjc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=226935553]
 shape = SubResource("RectangleShape2D_nr8tw")

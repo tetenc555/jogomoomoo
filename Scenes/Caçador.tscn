@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dc0h2gjpufjmy"]
 
 [ext_resource type="Script" uid="uid://cvjdi3hpjxkvr" path="res://Scenes/caçador.gd" id="1_3cn7e"]
-[ext_resource type="Texture2D" path="res://lenhador.jpg" id="2_r61lp"]
+[ext_resource type="Texture2D" uid="uid://cpm7a5m14kgai" path="res://Assets/lenhador.jpg" id="2_r61lp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_csc1j"]
 animations = [{
