@@ -27,7 +27,7 @@ func get_direction():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
-	print(player)
+	#print(player)
 
 func patrol():
 	velocity.x = direction * SPEED
@@ -67,7 +67,7 @@ func can_see_player() -> bool:
 	vision_ray.force_raycast_update()
 	
 	if !vision_ray.is_colliding():
-		print("Raio nao colidindo")
+		#print("Raio nao colidindo")
 		return false
 	var collider = vision_ray.get_collider()
 	#print("Raio bateu em:", collider)
@@ -79,13 +79,13 @@ func can_see_player() -> bool:
 	return false
 
 func _on_shoot_timer_timeout():
-	print("Timer disparou")
+	#print("Timer disparou")
 	if can_see_player():
-		print("Caçador atira")
+		#print("Caçador atira")
 		shoot()
 
 func shoot():
-	print("Atirando")
+	#print("Atirando")
 	var bullet = bullet_scene.instantiate()
 	
 	bullet.hunterShoot = true
@@ -149,7 +149,7 @@ func _on_head_body_entered(body: Node2D) -> void:
 	if dead:
 		return
 	if body.is_in_group("Player"):
-		print("lenhador morreu")
+		#print("lenhador morreu")
 		velocity = Vector2.ZERO
 		die()
 		body.velocity.y = -350
