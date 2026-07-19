@@ -37,6 +37,7 @@ func patrol():
 func turn():
 	direction *= -1
 	sprite.flip_h = direction < 0
+	vision_ray.position.x = -vision_ray.position.x
 	
 	wall_detector.target_position.x = 12*direction
 	wall_detector.position.x = 11*direction
@@ -48,18 +49,18 @@ func turn():
 
 func can_see_player() -> bool:
 	if player == null:
-		print("Player é null")
+		#print("Player é null")
 		return false
 	
 	var distance = player.global_position - self.global_position
-	print("Distancia: ", distance)
+	#print("Distancia: ", distance)
 	
 	if abs(distance.x) > 300:
-		print("Longe")
+		#print("Longe")
 		return false
 	
 	if sign(distance.x) != direction:
-		print("Jogador atras")
+		#print("Jogador atras")
 		return false
 	
 	vision_ray.target_position = distance
@@ -69,10 +70,10 @@ func can_see_player() -> bool:
 		print("Raio nao colidindo")
 		return false
 	var collider = vision_ray.get_collider()
-	print("Raio bateu em:", collider)
+	#print("Raio bateu em:", collider)
 	
 	if collider == player:
-		print("Enxerga o jogador")
+		#print("Enxerga o jogador")
 		return true
 	
 	return false
@@ -154,10 +155,12 @@ func _on_head_body_entered(body: Node2D) -> void:
 		body.velocity.y = -350
 
 func setAnimation(velocity_X, velocity_Y):
+	'''
 	if self.vision_ray.target_position.x > 0:
 		sprite.flip_h = false
 	elif self.vision_ray.target_position.x < 0:
 		sprite.flip_h = true
+	'''
 	if velocity_Y == 0:
 		if velocity_X != 0:
 			sprite.play("andando")
