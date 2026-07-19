@@ -90,8 +90,8 @@ func die():
 	sprite.flip_v=true;
 	collision_layer = 0
 	collision_mask = 0
-	camera2d.reparent(self.get_parent());
-	#camera2d.global_position = self.global_position;
+	#camera2d.reparent(self.get_parent());
+	camera2d.global_position = self.global_position;
 	$CollisionShape2D.disabled = true
 	
 	velocity = Vector2.ZERO
@@ -99,7 +99,7 @@ func die():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	await tween.finished
-	
+	get_tree().reload_current_scene()
 	queue_free()
 
 				
