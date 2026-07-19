@@ -16,4 +16,3 @@ func die() -> void:
 	tween.tween_property(self, "rotation", angulo_alvo, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
 	tween.tween_property(self, "global_position:y", self.global_position.y + 13.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-		

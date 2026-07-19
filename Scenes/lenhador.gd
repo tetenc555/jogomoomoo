@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 50.0
 const JUMP_VELOCITY = -200.0
-var item_scene = preload("res://Scenes/collectibles/collectible_item.tscn")
+var item_scene = preload("res://Scenes/collectible_item.tscn")
 
 func get_direction():
 	if sprite.flip_h == false:

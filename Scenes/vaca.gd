@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -300.0
 var powerup_atual = GameManager.PowerUpType.NENHUM
 @onready var sprite = $AnimatedSprite2D
 @onready var machadoArea = $MachadoArea
+@onready var camera2d = $Camera2D
 @onready var machado_distancia_x: float = abs(machadoArea.position.x)
 
 
@@ -83,8 +84,11 @@ func take_damage(amount: int, enemy_position: Vector2):
 func die():
 	
 	dead = true
+	sprite.flip_v=true;
 	collision_layer = 0
 	collision_mask = 0
+	camera2d.reparent(self.get_parent());
+	camera2d.global_position = self.global_position;
 	$CollisionShape2D.disabled = true
 	
 	velocity = Vector2.ZERO
