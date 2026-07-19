@@ -40,7 +40,10 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		if powerup_atual == GameManager.PowerUpType.NENHUM:
+			velocity.y = JUMP_VELOCITY
+		else:
+			velocity.y = JUMP_VELOCITY + 100
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -88,7 +91,7 @@ func die():
 	collision_layer = 0
 	collision_mask = 0
 	camera2d.reparent(self.get_parent());
-	camera2d.global_position = self.global_position;
+	#camera2d.global_position = self.global_position;
 	$CollisionShape2D.disabled = true
 	
 	velocity = Vector2.ZERO
@@ -166,6 +169,6 @@ func machadada():
 	for body in corpos_dentro:
 		if(body.is_in_group("Inimigos")):
 			body.die()
-		if(body.name=="Tree" || body.name == "Barrier"):
+		if(body.is_in_group("Tree") || body.name == "Barrier"):
 			self.changePowerUp(GameManager.PowerUpType.NENHUM)
 			body.die();

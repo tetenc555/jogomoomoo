@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rvk3"]
 size = Vector2(14, 48)
 
-[node name="Tree" type="StaticBody2D" unique_id=411317137]
+[node name="Tree" type="StaticBody2D" unique_id=411317137 groups=["Tree"]]
 disable_mode = 1
 collision_mask = 15
 script = ExtResource("1_itkj8")
