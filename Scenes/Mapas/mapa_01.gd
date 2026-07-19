@@ -32,6 +32,8 @@ func _on_placa_dica_3_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Player") and !placaDica3):
 		await GameManager.dialogo("dicaMachado")
 		placaDica3= true
+		SceneController.changeSceneTo(load("res://Scenes/Mapas/Mapa02.tscn"),"CircleToon")
+
 
 
 func _on_placa_dica_4_body_entered(body: Node2D) -> void:

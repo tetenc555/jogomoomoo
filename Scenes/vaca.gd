@@ -9,6 +9,7 @@ const BULLET = preload("res://Scenes/Bullet.tscn")
 const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 var powerup_atual = GameManager.PowerUpType.NENHUM
+var pode_se_mover: bool = true
 @onready var sprite = $AnimatedSprite2D
 @onready var machadoArea = $MachadoArea
 @onready var camera2d = $Camera2D
@@ -54,7 +55,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	setAnimation(velocity.x,velocity.y)
+	if(pode_se_mover):
+		setAnimation(velocity.x,velocity.y)
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("Atirar"):
@@ -165,7 +167,9 @@ func shoot():
 	get_tree().current_scene.add_child(shot)
 	
 func machadada():
+	
 	sprite.play("machadada")
+	pode_se_mover = false
 	var corpos_dentro = machadoArea.get_overlapping_bodies()
 	
 	for body in corpos_dentro:
@@ -174,3 +178,6 @@ func machadada():
 		if(body.is_in_group("Tree") || body.name == "Barrier"):
 			self.changePowerUp(GameManager.PowerUpType.NENHUM)
 			body.die();
+	await get_tree().create_timer(0.5).timeout
+	pode_se_mover = true
+	
