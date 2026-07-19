@@ -979,6 +979,8 @@ size = Vector2(15, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfufj"]
 size = Vector2(15, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leews"]
+
 [node name="Mapa02" type="Node2D" unique_id=106730858]
 script = ExtResource("1_rrhud")
 
@@ -1006,7 +1008,7 @@ tile_map_data = PackedByteArray("AAD2//z/AQAAABAAAAD3//z/AQABABAAAAD4//z/AQACABA
 tile_set = SubResource("TileSet_ej8t7")
 
 [node name="Player" parent="." unique_id=1905277663 instance=ExtResource("1_1m8wd")]
-position = Vector2(815, -49)
+position = Vector2(1044, -53)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2036317324]
 zoom = Vector2(4, 4)
@@ -1051,5 +1053,23 @@ collision_mask = 4
 position = Vector2(168, -23)
 shape = SubResource("RectangleShape2D_xfufj")
 
+[node name="Timer" type="Timer" parent="." unique_id=1353173579]
+wait_time = 2.0
+
+[node name="Spawners" type="Node2D" parent="." unique_id=1459090702]
+
+[node name="Marker2D" type="Marker2D" parent="Spawners" unique_id=1535363989]
+position = Vector2(1104, -45)
+
+[node name="TriggerSpawn" type="Area2D" parent="." unique_id=962564484]
+position = Vector2(903, -73)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerSpawn" unique_id=1788752505]
+shape = SubResource("RectangleShape2D_leews")
+
 [connection signal="body_entered" from="PlacaDica3" to="." method="_on_placa_dica_3_body_entered"]
 [connection signal="body_entered" from="PlacaDica2" to="." method="_on_placa_dica_2_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="TriggerSpawn" to="." method="_on_trigger_spawn_body_entered"]
